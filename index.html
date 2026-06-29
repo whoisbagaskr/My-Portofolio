@@ -32,12 +32,14 @@
            2. WEB PORTFOLIO STYLE
            ========================================================================== */
         header { text-align: center; margin-bottom: 50px; }
-        .avatar {
-            width: 110px; height: 110px; border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-neon), var(--accent-blue));
-            margin: 0 auto 20px; display: flex; justify-content: center; align-items: center;
-            font-size: 3rem; box-shadow: 0 0 25px rgba(0, 245, 212, 0.25);
+        .avatar-box {
+            width: 130px; height: 130px; border-radius: 50%;
+            margin: 0 auto 20px; overflow: hidden;
+            border: 3px solid var(--accent-neon);
+            box-shadow: 0 0 25px rgba(0, 245, 212, 0.3);
+            background: #1e1e38; display: flex; justify-content: center; align-items: center;
         }
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
         header h1 {
             font-size: 2.6rem; font-weight: 700;
             background: linear-gradient(to right, #ffffff, var(--accent-neon));
@@ -47,7 +49,7 @@
         header p { color: var(--text-muted); font-size: 1.1rem; }
 
         /* Action Buttons */
-        .btn-container { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        .btn-container { display: flex; justify-content: center; gap: 10px; margin-top: 25px; flex-wrap: wrap; }
         .btn {
             padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
             cursor: pointer; transition: all 0.2s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
@@ -71,13 +73,43 @@
         .time-badge { display: inline-block; background: var(--border-color); color: var(--accent-neon); padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
         .timeline-item h3 { color: #fff; font-size: 1.25rem; margin-bottom: 3px; }
         .timeline-item h4 { color: var(--accent-green); font-size: 0.95rem; font-weight: 500; margin-bottom: 8px; }
-        .timeline-item p { color: var(--text-muted); font-size: 0.95rem; }
+        .timeline-item p { color: var(--text-muted); font-size: 0.95rem; white-space: pre-line; }
 
-        /* Grid Proyek */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .project-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; transition: all 0.3s ease; }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 8px 20px rgba(25, 130, 196, 0.15); }
-        .project-card .tag { display: inline-block; background: rgba(25, 130, 196, 0.1); color: var(--accent-blue); font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase; }
+        /* ==========================================================================
+           DESAIN GRID PROYEK + GAME-CHANGER: DUKUNGAN GAMBAR/FOTO
+           ========================================================================== */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .project-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            overflow: hidden; /* Biar gambar gak keluar dari melengkungnya kotak */
+            transition: all 0.3s ease; 
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 8px 20px rgba(25, 130, 196, 0.2); }
+        
+        /* Frame Foto Projek */
+        .project-img-wrapper {
+            width: 100%;
+            height: 180px;
+            background: #1e1e38;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Foto otomatis nge-pas-in ukuran kotak tanpa gepeng */
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.08); /* Efek zoom tipis pas mouse lewat */
+        }
+
+        .project-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-card .tag { align-self: flex-start; display: inline-block; background: rgba(25, 130, 196, 0.1); color: var(--accent-blue); font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 12px; text-transform: uppercase; }
         .project-card h3 { color: #fff; margin-bottom: 8px; font-size: 1.15rem; }
         .project-card p { color: var(--text-muted); font-size: 0.9rem; }
 
@@ -113,14 +145,12 @@
         .cv-item { margin-bottom: 15px; page-break-inside: avoid; }
         .cv-item-title-row { display: flex; justify-content: space-between; font-weight: bold; color: #1e293b; font-size: 1rem; }
         .cv-item-subtitle-row { display: flex; justify-content: space-between; color: #475569; font-style: italic; font-size: 0.9rem; margin-bottom: 5px; }
-        .cv-item p { color: #334155; font-size: 0.9rem; text-align: justify; line-height: 1.5; }
+        .cv-item p { color: #334155; font-size: 0.9rem; text-align: justify; line-height: 1.5; white-space: pre-line; }
         
-        /* Split layout khusus skill di CV */
-        .cv-skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; color: #334155; font-size: 0.9rem; }
+        .cv-skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .cv-skills-column h3 { font-size: 1rem; color: #1e293b; margin-bottom: 8px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 2px; }
+        .cv-skills-list { color: #334155; font-size: 0.9rem; line-height: 1.6; }
 
-        /* ==========================================================================
-           4. PRINT OPTIMIZATION (TRICK AUTO JADI PDF KERTAS PUTIH)
-           ========================================================================== */
         @media print {
             body * { visibility: hidden; }
             .cv-modal, .cv-modal * { visibility: visible; }
@@ -135,13 +165,16 @@
     <div class="container" id="main-portfolio">
         <!-- HEADER UTAMA -->
         <header>
-            <div class="avatar">💼</div>
+            <div class="avatar-box">
+                <img src="foto-bagas.jpg" alt="Bagas Arya Putra">
+            </div>
             <h1 id="port-name">Loading...</h1>
             <p id="port-tagline">Loading...</p>
             
             <div class="btn-container">
                 <button class="btn btn-primary" onclick="openCV()">📄 Lihat & Cetak CV</button>
-                <a class="btn btn-secondary" href="mailto:bagasarya@example.com">📧 Hubungi Saya</a>
+                <a class="btn btn-secondary" href="mailto:ba6422977@gmail.com">📧 Email</a>
+                <a class="btn btn-secondary" href="https://wa.me/6282171123965?text=Halo%20Bagas,%20saya%20tertarik%20dengan%20portofolio%20Anda." target="_blank">💬 WhatsApp</a>
             </div>
         </header>
 
@@ -149,15 +182,15 @@
         <section>
             <h2>Pengalaman Kerja</h2>
             <div class="timeline" id="port-experience">
-                <!-- Data dimasukkan otomatis lewat JavaScript di bawah -->
+                <!-- Otomatis diisi lewat Javascript -->
             </div>
         </section>
 
-        <!-- SECTION: PROJEK / PORTFOLIO -->
+        <!-- SECTION: PROJEK / PORTFOLIO WITH IMAGE SUPPORT -->
         <section>
-            <h2>Proyek Terbaik Seumur Hidup</h2>
+            <h2>Proyek Utama & Galeri Hasil Kerja</h2>
             <div class="project-grid" id="port-projects">
-                <!-- Data dimasukkan otomatis lewat JavaScript di bawah -->
+                <!-- Otomatis diisi lewat Javascript -->
             </div>
         </section>
 
@@ -168,59 +201,48 @@
     </div>
 
 
-    <!-- ==========================================================================
-         MODAL LAYOUT CV FORMAL (ATS-FRIENDLY)
-         ========================================================================== -->
+    <!-- MODAL POP-UP CV FORMAL -->
     <div class="cv-modal" id="cvModal">
         <div class="cv-paper">
             <button class="cv-close-btn" onclick="closeCV()">Tutup [Esc]</button>
             
-            <!-- CV Header -->
             <div class="cv-header">
                 <h1 id="cv-name">Loading...</h1>
                 <p id="cv-contact">Loading...</p>
             </div>
 
-            <!-- CV Tentang Saya -->
             <div class="cv-section">
-                <h2>Ringkasan Profesional</h2>
+                <h2>Objektif / Ringkasan Profesional</h2>
                 <p id="cv-summary">Loading...</p>
             </div>
 
-            <!-- CV Pengalaman Kerja -->
             <div class="cv-section">
                 <h2>Pengalaman Kerja</h2>
-                <div id="cv-experience-list">
-                    <!-- Otomatis diisi oleh JavaScript -->
-                </div>
+                <div id="cv-experience-list"></div>
             </div>
 
-            <!-- CV Proyek -->
             <div class="cv-section">
                 <h2>Proyek Utama</h2>
-                <div id="cv-project-list">
-                    <!-- Otomatis diisi oleh JavaScript -->
-                </div>
+                <div id="cv-project-list"></div>
             </div>
 
-            <!-- CV Pendidikan & Pelatihan -->
             <div class="cv-section">
                 <h2>Pendidikan & Pelatihan</h2>
-                <div id="cv-education-list">
-                    <!-- Otomatis diisi oleh JavaScript -->
-                </div>
+                <div id="cv-education-list"></div>
             </div>
 
-            <!-- CV Keahlian -->
             <div class="cv-section">
                 <h2>Keahlian / Skills</h2>
-                <div class="cv-skills-grid" id="cv-skills-list">
-                    <!-- Otomatis diisi oleh JavaScript -->
+                <div class="cv-skills-container">
+                    <div class="cv-skills-column">
+                        <h3>Hard Skills</h3>
+                        <div class="cv-skills-list" id="cv-hardskills"></div>
+                    </div>
+                    <div class="cv-skills-column">
+                        <h3>Soft Skills</h3>
+                        <div class="cv-skills-list" id="cv-softskills"></div>
+                    </div>
                 </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 35px; color: #94a3b8; font-size: 0.8rem;" class="cv-close-btn-hidden">
-                <p>*Gunakan kombinasi tombol <b>Ctrl + P</b> untuk menyimpan halaman CV ini sebagai file PDF resmi.</p>
             </div>
         </div>
     </div>
@@ -230,159 +252,140 @@
          JAVASCRIPT DATA CENTER (EDIT-FRIENDLY ZONE)
          ========================================================================== -->
     <script>
-        // SIlakan ubah teks di dalam tanda kutip di bawah ini sesuai keinginan lo, Jir!
         const DATA_PROFILE = {
-            nama: "Bagas Arya Putra",
-            tagline: "E-Commerce Specialist | Digital Contributor | Tech Enthusiast",
-            kontak: "Trenggalek, Jawa Timur | bagasarya@example.com | +62 812-3456-7890",
-            ringkasan: "Seorang profesional muda yang berdedikasi tinggi di industri e-commerce, manajemen operasi digital, dan pengelolaan media kreatif. Memiliki rekam jejak yang kuat dalam mengoptimasi platform marketplace, analisis kredibilitas profesi, serta kontribusi visual di industri stok fotografi global."
+            nama: "BAGAS ARYA PUTRA",
+            tagline: "Gada Pratama Security | Electrical Technician | Ex-Kitchen Crew",
+            kontak: "Krajan 03/01, Desa Tegaren, Kec. Tugu, Kab. Trenggalek 66352 | ba6422977@gmail.com | 082171123965",
+            ringkasan: "Lulusan SMKN 1 Trenggalek jurusan Teknik Instalasi Tenaga Listrik. Memiliki beberapa pengalaman antara lain sebagai Teknisi Listrik dan Kitchen Crew, dan sudah mengikuti Pendidikan Gada Pratama[cite: 1]. Selalu bersemangat untuk menghadapi tantangan baru, terus meningkatkan kemampuan dan secara proaktif mencari peluang untuk pengembangan diri[cite: 1]."
         };
 
         const DATA_PENGALAMAN = [
             {
-                tahun: "2026 - Sekarang",
-                jabatan: "E-Commerce & Store Operator",
-                perusahaan: "Tokopedia & TikTok Shop Seller Accounts",
-                deskripsi: "Mengelola verifikasi, mekanisme onboarding, hingga optimalisasi arsitektur toko online. Memanfaatkan tools manajemen mutakhir seperti GMV Max, Seller Toolkit, serta aktif menyelesaikan misi Growth Lab guna mendongkrak visibilitas pasar dan konversi penjualan digital."
+                tahun: "Mei 2025 - Januari 2026",
+                jabatan: "Commis 2 (Junior Cook) - Karyawan Tetap",
+                perusahaan: "Pendopo Garden Cafe & Eatery - Trenggalek",
+                deskripsi: "• Melakukan prepare dan memastikan kebersihan area kerja sudah sesuai standar higienitas[cite: 1].\n• Melakukan produksi bahan dasar, eksekusi masakan, plating, dan mengoperasikan wok[cite: 1]."
             },
             {
-                tahun: "2026",
-                jabatan: "Security Personnel Applicant",
-                perusahaan: "Professional Credentials Analytics",
-                deskripsi: "Melakukan proses optimalisasi kesiapan karir profesional di sektor keamanan. Menggunakan platform Ordal.id untuk analisis komparatif dan perbaikan CV serta sukses melalui verifikasi identitas berskala nasional via SEEK Pass."
+                tahun: "Januari 2025 - April 2025",
+                jabatan: "Teknisi Listrik Departemen Pemrosesan Minyak Kelapa - Karyawan Kontrak",
+                perusahaan: "PT Pulau Sambu Guntung - Riau",
+                deskripsi: "• Bertanggung jawab terhadap seluruh komponen kelistrikan yang ada di departemen[cite: 1].\n• Melakukan maintenance jika ada kerusakan dan kejadian abnormal[cite: 1].\n• Melakukan perawatan, pengecekan, dan pembersihan rutin seluruh komponen listrik[cite: 1]."
             },
             {
-                tahun: "2024 - 2026",
-                jabatan: "Digital Content & Video Editor",
-                perusahaan: "Independent Creator",
-                deskripsi: "Memproduksi, merancang, dan menyunting aset video pendek interaktif yang disesuaikan untuk tren media sosial terkini menggunakan software CapCut. Mengatur efisiensi administrasi proyek dan dokumentasi produktivitas digital lewat WPS Office upgrades."
+                tahun: "September 2024 - November 2024",
+                jabatan: "Tenaga Produksi Property Aluminium & Kaca - Daily Worker",
+                perusahaan: "Surya Abadi Glass - Trenggalek",
+                deskripsi: "• Melakukan serangkaian proses produksi mulai dari perencanaan, persiapan alat dan komponen, perakitan, dan pengiriman[cite: 1]."
+            },
+            {
+                tahun: "Juli 2024 - September 2024",
+                jabatan: "Karyawan Toko ATK & Fotocopy - Daily Worker",
+                perusahaan: "BUMDES Sugiharto - Trenggalek",
+                deskripsi: "• Melakukan penjualan, merchandising, dan membuat project pesanan pelanggan[cite: 1].\n• Mengoperasikan mesin fotocopy & printer[cite: 1]."
             }
         ];
 
+        // ==========================================================================
+        // PANDUAN EDIT PROJEK + UPDATE GAMBAR:
+        // Cukup ganti teks di dalam tanda kutip ("") dan masukkan file foto lo ke GitHub.
+        // ==========================================================================
         const DATA_PROYEK = [
             {
-                kategori: "Photography",
-                judul: "Digital Stock Contributor",
-                deskripsi: "Aktif melacak tren visual marketing dunia serta menyuplai aset fotografi digital berkualitas tinggi secara konsisten sebagai kontributor terverifikasi di platform Dreamstime."
+                kategori: "Security",
+                judul: "Pengamanan & Kesamaptaan Gada Pratama",
+                deskripsi: "Mengaplikasikan keahlian Turjawali (Pengaturan, Penjagaan, Pengawalan, dan Patroli) serta Beladiri Polri dalam simulasi pengamanan area operasional[cite: 1].",
+                gambar: "projek-security.jpg" // ⬅️ Ganti dengan nama file foto lo di GitHub
             },
             {
-                kategori: "Language & Training",
-                judul: "Foreign Language Program",
-                deskripsi: "Mengikuti dan menyelesaikan program sertifikasi pelatihan intensif bahasa asing, mencakup Bahasa Jepang dan Korea, yang diselenggarakan di SMKN 1 Trenggalek demi kesiapan komunikasi global."
+                kategori: "Electrical",
+                judul: "Instalasi Panel Distribusi Tenaga Listrik",
+                deskripsi: "Merancang dan merakit sistem instalasi kelistrikan berstandar safety tinggi untuk kebutuhan fungsional mesin produksi industri maupun kelistrikan domestik[cite: 1].",
+                gambar: "projek-listrik.jpg"  // ⬅️ Ganti dengan nama file foto lo di GitHub
             },
             {
-                kategori: "Development",
-                judul: "Interactive Web Applications",
-                deskripsi: "Membangun portofolio aplikasi mini berbasis web menggunakan kombinasi JavaScript murni, manipulasi DOM dinamis, animasi CSS tingkat lanjut, hingga simulasi koding logis interaktif."
+                kategori: "Culinary",
+                judul: "Food Plating & Kitchen Management",
+                deskripsi: "Dokumentasi standar kebersihan tinggi serta kreasi estetika plating menu masakan pada porsi wok berkecepatan tinggi selama operasional dapur komersial[cite: 1].",
+                gambar: "projek-masak.jpg"   // ⬅️ Ganti dengan nama file foto lo di GitHub
             }
         ];
 
         const DATA_PENDIDIKAN = [
             {
-                waktu: "Lulusan S1 / Setara",
-                instansi: "Nama Universitas / Sekolah Lo",
-                jurusan: "Jurusan Pendidikan Lo (Misal: Teknik Informatika / Manajemen)"
+                waktu: "2021 - 2024",
+                instansi: "SMK Negeri 1 Trenggalek (Formal)",
+                jurusan: "Teknik Instalasi Tenaga Listrik | Nilai rata-rata 86,41[cite: 1]"
             },
             {
-                waktu: "April 2026",
-                instansi: "SMKN 1 Trenggalek",
-                jurusan: "Program Pelatihan Bahasa Asing (Jepang & Korea)"
+                waktu: "Tahun 2026",
+                instansi: "PT Empat Bintang Luhur Berjaya (Non Formal)",
+                jurusan: "Pendidikan Satpam Gada Pratama[cite: 1]"
             }
         ];
 
-        const DATA_SKILLS = [
-            "Marketplace Management (Tokopedia, TikTok Shop)",
-            "Video Editing & Production (CapCut)",
-            "Office Productivity Tools (WPS Office, Google Docs)",
-            "Visual Trend Tracking & Stock Photography",
-            "Basic Web Development (HTML, CSS, JavaScript)",
-            "Cross-Cultural Communication (Basic Japanese & Korean)"
-        ];
+        const HARD_SKILLS = ["Beladiri Polri", "Microsoft Office", "Instalasi Listrik", "Turjawali", "Memasak"]; //[cite: 1]
+        const SOFT_SKILLS = ["Tetap tenang dibawah tekanan", "Disiplin dan Produktif", "Komunikasi Efektif", "Gampang Berbaur", "Penerapan Kebersihan dan Kerapian"]; //[cite: 1]
 
 
         /* ==========================================================================
-           5. ENGINE SYSTEM (OTOMATIS GENERATE DATA & LOGIKA MODAL)
+           ENGINE SYSTEM (DILARANG UT-AK ATIK)
            ========================================================================== */
-        
-        // Render ke Web Portfolio View
         document.getElementById('port-name').innerText = DATA_PROFILE.nama;
         document.getElementById('port-tagline').innerText = DATA_PROFILE.tagline;
         document.getElementById('footer-name').innerText = DATA_PROFILE.nama;
 
         let htmlExp = '';
         DATA_PENGALAMAN.forEach(exp => {
-            htmlExp += `<div class="timeline-item">
-                <span class="time-badge">${exp.tahun}</span>
-                <h3>${exp.jabatan}</h3>
-                <h4>${exp.perusahaan}</h4>
-                <p>${exp.deskripsi}</p>
-            </div>`;
+            htmlExp += `<div class="timeline-item"><span class="time-badge">${exp.tahun}</span><h3>${exp.jabatan}</h3><h4>${exp.perusahaan}</h4><p>${exp.deskripsi}</p></div>`;
         });
         document.getElementById('port-experience').innerHTML = htmlExp;
 
+        // Render Projek lengkap dengan gambar pendukung
         let htmlProj = '';
         DATA_PROYEK.forEach(proj => {
-            htmlProj += `<div class="project-card">
-                <span class="tag">${proj.kategori}</span>
-                <h3>${proj.judul}</h3>
-                <p>${proj.deskripsi}</p>
-            </div>`;
+            htmlProj += `
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="${proj.gambar}" alt="${proj.judul}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500';">
+                    </div>
+                    <div class="project-content">
+                        <span class="tag">${proj.kategori}</span>
+                        <h3>${proj.judul}</h3>
+                        <p>${proj.deskripsi}</p>
+                    </div>
+                </div>`;
         });
         document.getElementById('port-projects').innerHTML = htmlProj;
 
-        // Render ke CV Kertas Putih View
         document.getElementById('cv-name').innerText = DATA_PROFILE.nama;
         document.getElementById('cv-contact').innerText = DATA_PROFILE.kontak;
         document.getElementById('cv-summary').innerText = DATA_PROFILE.ringkasan;
 
         let cvExp = '';
         DATA_PENGALAMAN.forEach(exp => {
-            cvExp += `<div class="cv-item">
-                <div class="cv-item-title-row"><span>${exp.jabatan}</span><span>${exp.tahun}</span></div>
-                <div class="cv-item-subtitle-row"><span>${exp.perusahaan}</span></div>
-                <p>${exp.deskripsi}</p>
-            </div>`;
+            cvExp += `<div class="cv-item"><div class="cv-item-title-row"><span>${exp.jabatan}</span><span>${exp.tahun}</span></div><div class="cv-item-subtitle-row"><span>${exp.perusahaan}</span></div><p>${exp.deskripsi}</p></div>`;
         });
         document.getElementById('cv-experience-list').innerHTML = cvExp;
 
         let cvProj = '';
         DATA_PROYEK.forEach(proj => {
-            cvProj += `<div class="cv-item">
-                <div class="cv-item-title-row"><span>${proj.judul}</span><span>${proj.kategori}</span></div>
-                <p>${proj.deskripsi}</p>
-            </div>`;
+            cvProj += `<div class="cv-item"><div class="cv-item-title-row"><span>${proj.judul}</span><span>${proj.kategori}</span></div><p>${proj.deskripsi}</p></div>`;
         });
         document.getElementById('cv-project-list').innerHTML = cvProj;
 
         let cvEdu = '';
         DATA_PENDIDIKAN.forEach(edu => {
-            cvEdu += `<div class="cv-item">
-                <div class="cv-item-title-row"><span>${edu.instansi}</span><span>${edu.waktu}</span></div>
-                <div class="cv-item-subtitle-row"><span>${edu.jurusan}</span></div>
-            </div>`;
+            cvEdu += `<div class="cv-item"><div class="cv-item-title-row"><span>${edu.instansi}</span><span>${edu.waktu}</span></div><div class="cv-item-subtitle-row"><span>${edu.jurusan}</span></div></div>`;
         });
         document.getElementById('cv-education-list').innerHTML = cvEdu;
 
-        let cvSkill = '';
-        DATA_SKILLS.forEach(skill => {
-            cvSkill += `<div>• ${skill}</div>`;
-        });
-        document.getElementById('cv-skills-list').innerHTML = cvSkill;
+        document.getElementById('cv-hardskills').innerHTML = HARD_SKILLS.map(s => `<div>• ${s}</div>`).join('');
+        document.getElementById('cv-softskills').innerHTML = SOFT_SKILLS.map(s => `<div>• ${s}</div>`).join('');
 
-        // Fungsi Tombol Modal Pop-up CV
-        function openCV() {
-            document.getElementById('cvModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCV() {
-            document.getElementById('cvModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        window.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeCV();
-        });
+        function openCV() { document.getElementById('cvModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeCV() { document.getElementById('cvModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
     </script>
 </body>
 </html>
