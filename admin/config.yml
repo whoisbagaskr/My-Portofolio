@@ -3,7 +3,7 @@ backend:
   repo: whoisbagaskr/My-Portofolio
   branch: main
 
-media_folder: "images" # Tempat menyimpan foto proyek lo otomatis
+media_folder: "images"
 public_folder: "/images"
 
 collections:
