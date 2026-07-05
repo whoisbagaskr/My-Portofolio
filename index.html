@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagas Arya Putra | Professional Showcase Portfolio</title>
+    <style>
+        /* ==========================================================================
+           1. CORE PREMIUM NEON ARCHITECTURE (ROOT STYLE)
+           ========================================================================== */
+        :root {
+            --bg-dark: #06060f;
+            --bg-card: #0b0b1e;
+            --border-neon: #1b1b3a;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --cyan: #00f5d4;
+            --blue: #3a86ff;
+            --purple: #7209b7;
+            --green: #8ac926;
+            --neon-glow: 0 0 25px rgba(0, 245, 212, 0.25);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* ==========================================================================
+           2. HEADER & PROFILE DISPLAY
+           ========================================================================== */
+        header { 
+            text-align: center; 
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .profile-wrapper {
+            position: relative;
+            width: 150px; height: 150px;
+            margin: 0 auto 25px;
+        }
+        .profile-frame {
+            width: 100%; height: 100%; border-radius: 50%;
+            overflow: hidden; border: 3px solid var(--cyan);
+            box-shadow: 0 0 35px rgba(0, 245, 212, 0.35);
+            background: #12122b; display: flex; justify-content: center; align-items: center;
+        }
+        .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .status-badge {
+            position: absolute; bottom: 5px; right: 5px;
+            background: var(--green); color: #000; font-size: 0.75rem;
+            font-weight: 800; padding: 4px 10px; border-radius: 20px;
+            box-shadow: 0 0 10px var(--green); text-transform: uppercase;
+        }
+
+        header h1 {
+            font-size: 3.2rem; font-weight: 800; letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 40%, var(--cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; max-width: 600px; margin: 0 auto 25px; }
+
+        /* Action Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 12px 26px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
+        .btn-primary { background: var(--cyan); color: #000; border: none; }
+        .btn-primary:hover { background: #00d1b5; transform: translateY(-2px); box-shadow: var(--neon-glow); }
+        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border-neon); }
+        .btn-secondary:hover { background: var(--border-neon); transform: translateY(-2px); }
+
+        /* ==========================================================================
+           3. MAIN GRID LAYOUT
+           ========================================================================== */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 35px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-neon);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
+        }
+
+        .section-title {
+            font-size: 1.4rem; color: #fff; margin-bottom: 25px;
+            display: flex; align-items: center; gap: 12px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .section-title::before {
+            content: ''; display: inline-block; width: 4px; height: 22px; background: var(--cyan); border-radius: 2px;
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* ==========================================================================
+           4. PORTFOLIO COMPONENT STYLES (NOT FOUND IN STANDARD CV)
+           ========================================================================= */
+        
+        /* Core Services / Kompetensi Utama */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 10px; }
+        .service-card { background: #070716; border: 1px solid var(--border-neon); padding: 20px; border-radius: 12px; transition: border 0.3s; }
+        .service-card:hover { border-color: var(--blue); }
+        .service-card .icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+        .service-card h4 { color: #fff; margin-bottom: 8px; font-size: 1.05rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Milestones Grid */
+        .milestone-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin-bottom: 10px; }
+        .milestone-item { background: linear-gradient(180deg, #0f0f2d, #070716); border: 1px solid var(--border-neon); padding: 15px; border-radius: 12px; }
+        .milestone-item .num { font-size: 1.8rem; font-weight: 800; color: var(--cyan); display: block; text-shadow: var(--neon-glow); }
+        .milestone-item .lbl { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+
+        /* Galeri Proyek */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .project-card {
+            background: #060616; border: 1px solid var(--border-neon); border-radius: 12px;
+            overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--cyan); box-shadow: var(--neon-glow); }
+        .project-img-box { width: 100%; height: 160px; background: #101026; overflow: hidden; position: relative; }
+        .project-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .project-card:hover .project-img-box img { transform: scale(1.05); }
+        
+        .p-status { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.75); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: var(--cyan); border: 1px solid var(--cyan); }
+        
+        .project-info { padding: 20px; flex-grow: 1; }
+        .project-info .tag { color: var(--purple); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
+        .project-info h3 { font-size: 1.15rem; color: #fff; margin-bottom: 8px; }
+        .project-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }
+        .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+        .project-tools span { font-size: 0.7rem; background: #141433; color: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid #22224c; }
+
+        /* Document/Certificate Grid */
+        .doc-list { display: flex; flex-direction: column; gap: 12px; }
+        .doc-item { display: flex; align-items: center; justify-content: space-between; background: #070716; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border-neon); }
+        .doc-info { display: flex; align-items: center; gap: 12px; }
+        .doc-icon { font-size: 1.4rem; }
+        .doc-name { font-size: 0.9rem; color: #fff; font-weight: 500; }
+        .doc-issuer { font-size: 0.75rem; color: var(--text-muted); }
+        .btn-view-doc { font-size: 0.8rem; color: var(--cyan); text-decoration: none; font-weight: 600; border: 1px solid var(--cyan); padding: 4px 10px; border-radius: 6px; background: transparent; transition: 0.2s; }
+        .btn-view-doc:hover { background: rgba(0,245,212,0.1); }
+
+        /* Timeline CV */
+        .timeline { border-left: 2px solid var(--border-neon); padding-left: 25px; margin-left: 5px; }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px;
+            border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue);
+        }
+        .time-badge { display: inline-block; background: rgba(58, 134, 255, 0.1); color: var(--blue); padding: 2px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; }
+        .timeline-item h3 { color: #fff; font-size: 1.2rem; }
+        .timeline-item h4 { color: var(--cyan); font-size: 0.95rem; margin-bottom: 8px; font-weight: 600; }
+        .timeline-item p { color: var(--text-muted); font-size: 0.9rem; white-space: pre-line; }
+
+        /* Skills Tags */
+        .skill-box { margin-bottom: 20px; }
+        .skill-box h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-item { background: #161633; border: 1px solid var(--border-neon); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
+
+        /* ==========================================================================
+           5. MODAL ATS SYSTEM INTERFACE
+           ========================================================================== */
+        .cv-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,10,0.92); backdrop-filter: blur(6px); z-index: 999; display: none; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 40px 20px; }
+        .cv-document { background: #ffffff; color: #1e293b; width: 100%; max-width: 800px; padding: 50px; border-radius: 4px; position: relative; font-family: 'Arial', sans-serif; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .cv-close { position: absolute; top: 20px; right: 20px; background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .cv-header { border-bottom: 2px solid #334155; padding-bottom: 15px; margin-bottom: 25px; text-align: center; }
+        .cv-header h1 { font-size: 2.2rem; color: #0f172a; text-transform: uppercase; }
+        .cv-header p { color: #475569; font-size: 0.95rem; font-weight: bold; margin-top: 5px; }
+        .cv-sec { margin-bottom: 25px; }
+        .cv-sec h2 { font-size: 1.15rem; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 12px; text-transform: uppercase; }
+        .cv-line { display: flex; justify-content: space-between; font-weight: bold; color: #1e293b; font-size: 0.9rem; margin-top: 8px; }
+        .cv-subline { display: flex; justify-content: space-between; color: #475569; font-style: italic; font-size: 0.85rem; margin-bottom: 3px; }
+        .cv-sec p { color: #334155; font-size: 0.85rem; text-align: justify; line-height: 1.5; white-space: pre-line; }
+
+        @media print {
+            body * { visibility: hidden; }
+            .cv-overlay, .cv-overlay * { visibility: visible; }
+            .cv-overlay { position: absolute; left: 0; top: 0; width: 100%; background: white; padding: 0; display: flex !important; }
+            .cv-document { box-shadow: none; padding: 0; width: 100%; max-width: 100%; }
+            .cv-close { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ==========================================
+             HEADER SECTION
+             ========================================== -->
+        <header>
+            <div class="profile-wrapper">
+                <div class="profile-frame">
+                    <img src="foto-bagas.jpg" alt="Bagas Arya Putra">
+                </div>
+                <!-- Status badge dinamis, mencerminkan lo siap kerja -->
+                <div class="status-badge">Ready to Hire</div>
+            </div>
+            <h1 id="dyn-name">Loading Name...</h1>
+            <p id="dyn-tagline">Loading Tagline...</p>
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="openCV()">📄 Lihat & Cetak CV ATS</button>
+                <a class="btn btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=ba6422977@gmail.com" target="_blank">📧 Email Utama</a>
+                <a class="btn btn-secondary" href="https://api.whatsapp.com/send?phone=6282171123965&text=Halo%20Bagas,%20saya%20tertarik%20dengan%20portofolio%20Anda." target="_blank">💬 WhatsApp Hubungi</a>
+            </div>
+        </header>
+
+        <!-- ==========================================
+             MAIN CONTENT LAYOUT
+             ========================================== -->
+        <div class="main-layout">
+            
+            <!-- KOLOM KIRI (UTAMA: LAYANAN, PROYEK, PENGALAMAN) -->
+            <div class="left-col">
+                
+                <!-- PORTFOLIO EXCLUSIVE: CORE SERVICES (Gak ada di CV) -->
+                <div class="section">
+                    <div class="section-title">Solusi & Layanan Utama</div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <span class="icon">🛡️</span>
+                            <h4>Sistem Pengamanan</h4>
+                            <p>Manajemen risiko keamanan fisik, implementasi Turjawali, tanggap darurat, dan proteksi aset lingkungan kerja.</p>
+                        </div>
+                        <div class="service-card">
+                            <span class="icon">⚡</span>
+                            <h4>Teknisi Kelistrikan</h4>
+                            <p>Instalasi arus kuat/lemah, perakitan panel kontrol, perawatan preventif komponen motor listrik industri.</p>
+                        </div>
+                        <div class="service-card">
+                            <span class="icon">🍳</span>
+                            <h4>Operasional Dapur</h4>
+                            <p>Produksi masakan skala komersial berkecepatan tinggi, kontrol higienitas pangan, dan food plating estetis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PORTFOLIO EXCLUSIVE: FEATURED PROJECTS WITH METADATA (Gak ada di CV) -->
+                <div class="section">
+                    <div class="section-title">Galeri Proyek & Unjuk Kerja</div>
+                    <div class="project-grid" id="dyn-projects"></div>
+                </div>
+
+                <!-- CV CORE: EXPERIENCE -->
+                <div class="section">
+                    <div class="section-title">Rekam Jejak Karier</div>
+                    <div class="timeline" id="dyn-experience"></div>
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN (SIDEBAR: STATS, RINGKASAN, EDUCATION, SKILLS) -->
+            <div class="right-col">
+                
+                <!-- PORTFOLIO EXCLUSIVE: METRICS & MILESTONES (Gak ada di CV) -->
+                <div class="section">
+                    <div class="section-title">Ringkasan Kerja</div>
+                    <div class="milestone-bar">
+                        <div class="milestone-item">
+                            <span class="num">2+</span>
+                            <span class="lbl">Tahun Kerja</span>
+                        </div>
+                        <div class="milestone-item">
+                            <span class="num">4+</span>
+                            <span class="lbl">Sektor Usaha</span>
+                        </div>
+                        <div class="milestone-item">
+                            <span class="num">100%</span>
+                            <span class="lbl">Komitmen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CV CORE: SUMMARY -->
+                <div class="section">
+                    <div class="section-title">Tentang Saya</div>
+                    <p id="dyn-summary" style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;"></p>
+                </div>
+
+                <!-- PORTFOLIO EXCLUSIVE: CREDENTIAL SHOWCASE / CERTIFICATES (Gak ada di CV) -->
+                <div class="section">
+                    <div class="section-title">Verifikasi & Berkas Resmi</div>
+                    <div class="doc-list">
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">🪪</span>
+                                <div>
+                                    <div class="doc-name">Sertifikat Gada Pratama</div>
+                                    <div class="doc-issuer">Mabes Polri / Polda Jatim</div>
+                                </div>
+                            </div>
+                            <a href="sertifikat-satpam.pdf" class="btn-view-doc" target="_blank">Buka</a>
+                        </div>
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📜</span>
+                                <div>
+                                    <div class="doc-name">Ijazah Resmi SMK</div>
+                                    <div class="doc-issuer">SMKN 1 Trenggalek</div>
+                                </div>
+                            </div>
+                            <a href="ijazah.pdf" class="btn-view-doc" target="_blank">Buka</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CV CORE: EDUCATION -->
+                <div class="section">
+                    <div class="section-title">Riwayat Pendidikan</div>
+                    <div id="dyn-education" style="font-size: 0.95rem;"></div>
+                </div>
+
+                <!-- CV CORE: SKILLS -->
+                <div class="section">
+                    <div class="section-title">Kompetensi Teknis</div>
+                    <div class="skill-box">
+                        <h3>Hard Skills</h3>
+                        <div class="tags" id="dyn-hardskills"></div>
+                    </div>
+                    <div class="skill-box">
+                        <h3>Soft Skills</h3>
+                        <div class="tags" id="dyn-softskills"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL OVERLAY (SISTEM MODUL ATS CV FORMAL)
+         ========================================== -->
+    <div class="cv-overlay" id="cvOverlay">
+        <div class="cv-document">
+            <button class="cv-close" onclick="closeCV()">Tutup [Esc]</button>
+            <div class="cv-header">
+                <h1 id="cv-name">Loading...</h1>
+                <p id="cv-contact">Loading...</p>
+            </div>
+            <div class="cv-sec">
+                <h2>Ringkasan Profesional</h2>
+                <p id="cv-summary">Loading...</p>
+            </div>
+            <div class="cv-sec">
+                <h2>Pengalaman Kerja</h2>
+                <div id="cv-exp-list"></div>
+            </div>
+            <div class="cv-sec">
+                <h2>Proyek & Pengalaman Lapangan</h2>
+                <div id="cv-proj-list"></div>
+            </div>
+            <div class="cv-sec">
+                <h2>Pendidikan & Pelatihan</h2>
+                <div id="cv-edu-list"></div>
+            </div>
+            <div class="cv-sec">
+                <h2>Keahlian Utama</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.85rem;" id="cv-skills-combo"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DATA CONTROLLER & JAVASCRIPT ENGINE
+         ========================================== -->
+    <script>
+        // SINKRONISASI DATA PROFILE UTAMA[cite: 1]
+        const DATA_PROFILE = {
+            nama: "BAGAS ARYA PUTRA",
+            tagline: "Gada Pratama Security Officer | Electrical Systems Technician | Professional Culinary Cook",
+            kontak: "Krajan 03/01, Desa Tegaren, Kec. Tugu, Kab. Trenggalek 66352 | ba6422977@gmail.com | 082171123965",
+            ringkasan: "Lulusan SMKN 1 Trenggalek bidang keahlian Teknik Instalasi Tenaga Listrik. Berpengalaman lintas industri sebagai Teknisi Listrik Pabrik, Junior Cook Komersial, serta telah menempuh Pendidikan Sertifikasi Satpam Gada Pratama resmi Polri[cite: 1]. Memiliki dedikasi tinggi terhadap kedisiplinan operasional, keamanan fisik aset, serta efisiensi perawatan kelistrikan industri[cite: 1]."
+        };
+
+        // INTEGRASI RIWAYAT PENGALAMAN[cite: 1]
+        const DATA_PENGALAMAN = [
+            {
+                waktu: "Mei 2025 - Januari 2026",
+                posisi: "Commis 2 (Junior Cook) - Full Time Employee",
+                tempat: "Pendopo Garden Cafe & Eatery - Trenggalek",
+                detail: "• Bertanggung jawab penuh atas kebersihan sanitasi dan higienitas area *hot kitchen* komersial[cite: 1].\n• Melakukan efisiensi produksi bahan dasar masakan, eksekusi menu koki, manajemen stok bumbu, serta pengoperasian teknik memasak wok kecepatan tinggi[cite: 1]."
+            },
+            {
+                waktu: "Januari 2025 - April 2025",
+                posisi: "Electrical Maintenance Technician - Contract Employee",
+                tempat: "PT Pulau Sambu Guntung - Riau",
+                detail: "• Bertanggung jawab penuh terhadap pengawasan, stabilitas, dan perbaikan seluruh komponen mesin kelistrikan di Departemen Pemrosesan Minyak Kelapa[cite: 1].\n• Menjalankan pemeliharaan preventif, inspeksi berkala panel distribusi, penanganan kendala *abnormal event*, serta penataan kabel sirkuit pabrik[cite: 1]."
+            },
+            {
+                waktu: "September 2024 - November 2024",
+                posisi: "Fabrication & Assembly Worker - Daily Worker",
+                tempat: "Surya Abadi Glass - Trenggalek",
+                detail: "• Melakukan kalkulasi material teknik, pemotongan, perakitan, dan pengiriman properti berbasis aluminium dan kaca arsitektur[cite: 1]."
+            },
+            {
+                waktu: "Juli 2024 - September 2024",
+                posisi: "Store Clerk & Printing Assistant - Daily Worker",
+                tempat: "BUMDES Sugiharto - Trenggalek",
+                detail: "• Mengelola layanan pelanggan retail alat tulis kantor, operasional mesin fotokopi/printer berkapasitas besar, dan penyelesaian proyek digital perkantoran[cite: 1]."
+            }
+        ];
+
+        // DATA PROYEK LENGKAF METADATA (DAPAT DIEDIT APABILA ADA PERUBAHAN)
+        const DATA_PROYEK = [
+            {
+                tag: "Security Operational",
+                judul: "Implementasi Sistem Turjawali & Tanggap Darurat",
+                desc: "Penerapan standar operasional prosedur kepolisian terbatas mencakup simulasi patroli keamanan wilayah, bela diri taktis Polri, dan sterilisasi area kerja perimeter luar[cite: 1].",
+                status: "Completed",
+                tools: ["Beladiri Taktis", "SOP Turjawali", "K3 Keamanan"],
+                img: "projek-security.jpg"
+            },
+            {
+                tag: "Industrial Electrical",
+                judul: "Maintenance & Rewiring Panel Distribusi 3-Phase",
+                desc: "Proyek pemeliharaan dan audit kelistrikan preventif pada motor induksi dan sirkuit panel kontrol utama pengolahan minyak industri guna mencegah *overheating* dan *short circuit*[cite: 1].",
+                status: "Active Maintenance",
+                tools: ["Multitester", "Wiring Diagram", "Panel 3-Phase"],
+                img: "projek-listrik.jpg"
+            },
+            {
+                tag: "Culinary Management",
+                judul: "Kitchen Production System & High-Volume Plating",
+                desc: "Optimasi alur kerja stasiun penggorengan dapur komersial, mempercepat waktu tunggu saji menu hingga 15%, sambil mempertahankan kepatuhan sanitasi ketat pangan[cite: 1].",
+                status: "Production Ready",
+                tools: ["Wok Operation", "HACCP Basics", "Food Styling"],
+                img: "projek-masak.jpg"
+            }
+        ];
+
+        // DATA PENDIDIKAN DAN PELATIHAN[cite: 1]
+        const DATA_PENDIDIKAN = [
+            { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Teknik Instalasi Tenaga Listrik | Rata-rata Nilai Kelulusan 86,41[cite: 1]" },
+            { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Pelatihan Resmi)", spesialisasi: "Pendidikan Satpam Kualifikasi Gada Pratama Polda Jatim[cite: 1]" }
+        ];
+
+        // DAFTAR SKILLS UNTUK PORTFOLIO DAN ATS CV[cite: 1]
+        const HARD_SKILLS = ["Beladiri Taktis Polri", "Instalasi Listrik Industri", "SOP Turjawali", "Operasional Wok Dapur", "Microsoft Office & Dokumen", "Panel Distribusi Listrik"];
+        const SOFT_SKILLS = ["Disiplin & Ketepatan Waktu", "Ketahanan Tekanan Tinggi", "Komunikasi Taktis", "Mudah Beradaptasi Lintas Sektor", "Manajemen Higienitas Kerja"];
+
+        // ==========================================
+        // AUTOMATED DOM INJECTION CONTROLLER
+        // ==========================================
+        document.getElementById('dyn-name').innerText = DATA_PROFILE.nama;
+        document.getElementById('dyn-tagline').innerText = DATA_PROFILE.tagline;
+        document.getElementById('dyn-summary').innerText = DATA_PROFILE.ringkasan;
+
+        let htmlExp = '';
+        DATA_PENGALAMAN.forEach(e => {
+            htmlExp += `<div class="timeline-item"><span class="time-badge">${e.waktu}</span><h3>${e.posisi}</h3><h4>${e.tempat}</h4><p>${e.detail}</p></div>`;
+        });
+        document.getElementById('dyn-experience').innerHTML = htmlExp;
+
+        let htmlProj = '';
+        DATA_PROYEK.forEach(p => {
+            let toolsSpan = p.tools.map(t => `<span>${t}</span>`).join('');
+            htmlProj += `
+                <div class="project-card">
+                    <div class="project-img-box">
+                        <span class="p-status">${p.status}</span>
+                        <img src="${p.img}" alt="${p.judul}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500';">
+                    </div>
+                    <div class="project-info">
+                        <span class="tag">${p.tag}</span>
+                        <h3>${p.judul}</h3>
+                        <p>${p.desc}</p>
+                        <div class="project-tools">${toolsSpan}</div>
+                    </div>
+                </div>`;
+        });
+        document.getElementById('dyn-projects').innerHTML = htmlProj;
+
+        let htmlEdu = '';
+        DATA_PENDIDIKAN.forEach(ed => {
+            htmlEdu += `<div style="margin-bottom:18px;"><strong style="color:var(--cyan);">${ed.kapan}</strong><p style="font-weight:600;margin-top:2px;">${ed.di}</p><p style="color:var(--text-muted);font-size:0.85rem;">${ed.spesialisasi}</p></div>`;
+        });
+        document.getElementById('dyn-education').innerHTML = htmlEdu;
+
+        document.getElementById('dyn-hardskills').innerHTML = HARD_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
+        document.getElementById('dyn-softskills').innerHTML = SOFT_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
+
+        // ==========================================
+        // INTEGRASI INTERFACE MODAL DATA CV ATS
+        // ==========================================
+        document.getElementById('cv-name').innerText = DATA_PROFILE.nama;
+        document.getElementById('cv-contact').innerText = DATA_PROFILE.kontak;
+        document.getElementById('cv-summary').innerText = DATA_PROFILE.ringkasan;
+
+        let cvExpHtml = '';
+        DATA_PENGALAMAN.forEach(e => { cvExpHtml += `<div style="margin-bottom:12px;"><div class="cv-line"><span>${e.posisi}</span><span>${e.waktu}</span></div><div class="cv-subline"><span>${e.tempat}</span></div><p>${e.detail}</p></div>`; });
+        document.getElementById('cv-exp-list').innerHTML = cvExpHtml;
+
+        let cvProjHtml = '';
+        DATA_PROYEK.forEach(p => { cvProjHtml += `<div style="margin-bottom:10px;"><div class="cv-line"><span>${p.judul}</span><span>${p.tag}</span></div><p>• ${p.desc}</p></div>`; });
+        document.getElementById('cv-proj-list').innerHTML = cvProjHtml;
+
+        let cvEduHtml = '';
+        DATA_PENDIDIKAN.forEach(ed => { cvEduHtml += `<div style="margin-bottom:10px;"><div class="cv-line"><span>${ed.di}</span><span>${ed.kapan}</span></div><div class="cv-subline"><span>${ed.spesialisasi}</span></div></div>`; });
+        document.getElementById('cv-edu-list').innerHTML = cvEduHtml;
+
+        document.getElementById('cv-skills-combo').innerHTML = `
+            <div><b>Hard Skills Kompetensi:</b><br>${HARD_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>
+            <div><b>Soft Skills & Karakter:</b><br>${SOFT_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>`;
+
+        // MODAL TOGGLE CONTROLLER
+        function openCV() { document.getElementById('cvOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeCV() { document.getElementById('cvOverlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
+    </script>
+</body>
+</html>
