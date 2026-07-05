@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: whoisbagaskr/My-Portofolio
+  branch: main
+
+media_folder: "images" # Tempat menyimpan foto proyek lo otomatis
+public_folder: "/images"
+
+collections:
+  - name: "cv_data"
+    label: "Data Portofolio & CV"
+    folder: "data"
+    create: false
+    fields:
+      - {label: "Nama Lengkap", name: "nama", widget: "string"}
+      - {label: "Tagline", name: "tagline", widget: "string"}
+      - {label: "Ringkasan Tentang Saya", name: "ringkasan", widget: "text"}
