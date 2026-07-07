@@ -4,6 +4,8 @@ backend:
   branch: main
   base_url: https://decap-cms-oauth-provider.vercel.app
   auth_endpoint: api/auth
+  client_id: Ov23li3toYeOpIDmUJQK
+  client_secret: 52666cdbdedf74bc5b9baaf574012184113de8b6
 
 media_folder: "images"
 public_folder: "/images"
@@ -14,6 +16,7 @@ collections:
     folder: "data"
     create: false
     fields:
+      - {label: "Judul Halaman", name: "title", widget: "string"}
       - {label: "Nama Lengkap", name: "nama", widget: "string"}
-      - {label: "Tagline", name: "tagline", widget: "string"}
-      - {label: "Ringkasan Tentang Saya", name: "ringkasan", widget: "text"}
+      - {label: "Deskripsi Singkat / Bio", name: "bio", widget: "text"}
+      - {label: "Keahlian (Skills)", name: "skills", widget: "list", summary: "{{fields.title}}"}
