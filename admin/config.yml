@@ -2,8 +2,6 @@ backend:
   name: github
   repo: whoisbagaskr/My-Portofolio
   branch: main
-  base_url: https://gatekeeper-vnglst.vercel.app
-  auth_endpoint: api/oauth
 
 media_folder: "images"
 public_folder: "/images"
