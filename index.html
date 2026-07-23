@@ -110,10 +110,9 @@
         }
 
         /* ==========================================================================
-           4. PORTFOLIO COMPONENT STYLES (NOT FOUND IN STANDARD CV)
+           4. PORTFOLIO COMPONENT STYLES
            ========================================================================= */
         
-        /* Core Services / Kompetensi Utama */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 10px; }
         .service-card { background: #070716; border: 1px solid var(--border-neon); padding: 20px; border-radius: 12px; transition: border 0.3s; }
         .service-card:hover { border-color: var(--blue); }
@@ -121,18 +120,13 @@
         .service-card h4 { color: #fff; margin-bottom: 8px; font-size: 1.05rem; }
         .service-card p { color: var(--text-muted); font-size: 0.85rem; }
 
-        /* Milestones Grid */
         .milestone-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin-bottom: 10px; }
         .milestone-item { background: linear-gradient(180deg, #0f0f2d, #070716); border: 1px solid var(--border-neon); padding: 15px; border-radius: 12px; }
         .milestone-item .num { font-size: 1.8rem; font-weight: 800; color: var(--cyan); display: block; text-shadow: var(--neon-glow); }
         .milestone-item .lbl { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
 
-        /* Galeri Proyek */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .project-card {
-            background: #060616; border: 1px solid var(--border-neon); border-radius: 12px;
-            overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;
-        }
+        .project-card { background: #060616; border: 1px solid var(--border-neon); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
         .project-card:hover { transform: translateY(-5px); border-color: var(--cyan); box-shadow: var(--neon-glow); }
         .project-img-box { width: 100%; height: 160px; background: #101026; overflow: hidden; position: relative; }
         .project-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
@@ -147,7 +141,6 @@
         .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
         .project-tools span { font-size: 0.7rem; background: #141433; color: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid #22224c; }
 
-        /* Document/Certificate Grid */
         .doc-list { display: flex; flex-direction: column; gap: 12px; }
         .doc-item { display: flex; align-items: center; justify-content: space-between; background: #070716; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border-neon); }
         .doc-info { display: flex; align-items: center; gap: 12px; }
@@ -157,19 +150,14 @@
         .btn-view-doc { font-size: 0.8rem; color: var(--cyan); text-decoration: none; font-weight: 600; border: 1px solid var(--cyan); padding: 4px 10px; border-radius: 6px; background: transparent; transition: 0.2s; }
         .btn-view-doc:hover { background: rgba(0,245,212,0.1); }
 
-        /* Timeline CV */
         .timeline { border-left: 2px solid var(--border-neon); padding-left: 25px; margin-left: 5px; }
         .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px;
-            border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue);
-        }
+        .timeline-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); }
         .time-badge { display: inline-block; background: rgba(58, 134, 255, 0.1); color: var(--blue); padding: 2px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; }
         .timeline-item h3 { color: #fff; font-size: 1.2rem; }
         .timeline-item h4 { color: var(--cyan); font-size: 0.95rem; margin-bottom: 8px; font-weight: 600; }
         .timeline-item p { color: var(--text-muted); font-size: 0.9rem; white-space: pre-line; }
 
-        /* Skills Tags */
         .skill-box { margin-bottom: 20px; }
         .skill-box h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -202,9 +190,7 @@
 <body>
 
     <div class="container">
-        <!-- ==========================================
-             HEADER SECTION
-             ========================================== -->
+        <!-- HEADER SECTION -->
         <header>
             <div class="profile-wrapper">
                 <div class="profile-frame">
@@ -222,53 +208,47 @@
             </div>
         </header>
 
-        <!-- ==========================================
-             MAIN CONTENT LAYOUT
-             ========================================== -->
+        <!-- MAIN CONTENT LAYOUT -->
         <div class="main-layout">
             
-            <!-- KOLOM KIRI (UTAMA: LAYANAN, PROYEK, PENGALAMAN) -->
+            <!-- KOLOM KIRI -->
             <div class="left-col">
                 
-                <!-- PORTFOLIO EXCLUSIVE: CORE SERVICES (Gak ada di CV) -->
                 <div class="section">
-                    <div class="section-title">Solusi & Layanan Utama</div>
+                    <div class="section-title">Keahlian Lintas Bidang (Generalist)</div>
                     <div class="services-grid">
                         <div class="service-card">
-                            <span class="icon">🛡️</span>
-                            <h4>Sistem Pengamanan</h4>
-                            <p>Manajemen risiko keamanan fisik, implementasi Turjawali, tanggap darurat, dan proteksi aset lingkungan kerja.</p>
+                            <span class="icon">🍳</span>
+                            <h4>F&B & Operasional</h4>
+                            <p>Memahami dasar operasional dapur dan standar kebersihan (F&B). Mampu beradaptasi cepat dengan alur kerja di lapangan.</p>
                         </div>
                         <div class="service-card">
                             <span class="icon">⚡</span>
-                            <h4>Teknisi Kelistrikan</h4>
-                            <p>Instalasi arus kuat/lemah, perakitan panel kontrol, perawatan preventif komponen motor listrik industri.</p>
+                            <h4>Dasar Kelistrikan</h4>
+                            <p>Punya *basic* kelistrikan. Sangat membantu untuk cek awal dan perbaikan ringan jika ada kendala instalasi saat sedang bekerja.</p>
                         </div>
                         <div class="service-card">
-                            <span class="icon">🍳</span>
-                            <h4>Operasional Dapur</h4>
-                            <p>Produksi masakan skala komersial berkecepatan tinggi, kontrol higienitas pangan, dan food plating estetis.</p>
+                            <span class="icon">🛡️</span>
+                            <h4>SOP Keamanan</h4>
+                            <p>Mengetahui prosedur keamanan dasar, mitigasi pencegahan kejahatan, dan tanggap darurat seperti penanganan awal kebakaran.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- PORTFOLIO EXCLUSIVE: FEATURED PROJECTS WITH METADATA (Gak ada di CV) -->
                 <div class="section">
-                    <div class="section-title">Galeri Proyek & Unjuk Kerja</div>
+                    <div class="section-title">Aplikasi Keahlian Lintas Disiplin</div>
                     <div class="project-grid" id="dyn-projects"></div>
                 </div>
 
-                <!-- CV CORE: EXPERIENCE -->
                 <div class="section">
                     <div class="section-title">Rekam Jejak Karier</div>
                     <div class="timeline" id="dyn-experience"></div>
                 </div>
             </div>
 
-            <!-- KOLOM KANAN (SIDEBAR: STATS, RINGKASAN, EDUCATION, SKILLS) -->
+            <!-- KOLOM KANAN -->
             <div class="right-col">
                 
-                <!-- PORTFOLIO EXCLUSIVE: METRICS & MILESTONES (Gak ada di CV) -->
                 <div class="section">
                     <div class="section-title">Ringkasan Kerja</div>
                     <div class="milestone-bar">
@@ -282,18 +262,16 @@
                         </div>
                         <div class="milestone-item">
                             <span class="num">100%</span>
-                            <span class="lbl">Komitmen</span>
+                            <span class="lbl">Adaptif</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- CV CORE: SUMMARY -->
                 <div class="section">
                     <div class="section-title">Tentang Saya</div>
                     <p id="dyn-summary" style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;"></p>
                 </div>
 
-                <!-- PORTFOLIO EXCLUSIVE: CREDENTIAL SHOWCASE / CERTIFICATES (Gak ada di CV) -->
                 <div class="section">
                     <div class="section-title">Verifikasi & Berkas Resmi</div>
                     <div class="doc-list">
@@ -320,13 +298,11 @@
                     </div>
                 </div>
 
-                <!-- CV CORE: EDUCATION -->
                 <div class="section">
                     <div class="section-title">Riwayat Pendidikan</div>
                     <div id="dyn-education" style="font-size: 0.95rem;"></div>
                 </div>
 
-                <!-- CV CORE: SKILLS -->
                 <div class="section">
                     <div class="section-title">Kompetensi Teknis</div>
                     <div class="skill-box">
@@ -343,9 +319,7 @@
         </div>
     </div>
 
-    <!-- ==========================================
-         MODAL OVERLAY (SISTEM MODUL ATS CV FORMAL)
-         ========================================== -->
+    <!-- MODAL OVERLAY (SISTEM MODUL ATS CV FORMAL) -->
     <div class="cv-overlay" id="cvOverlay">
         <div class="cv-document">
             <button class="cv-close" onclick="closeCV()">Tutup [Esc]</button>
@@ -376,93 +350,76 @@
         </div>
     </div>
 
-    <!-- ==========================================
-         DATA CONTROLLER & JAVASCRIPT ENGINE
-         ========================================== -->
+    <!-- DATA CONTROLLER & JAVASCRIPT ENGINE -->
     <script>
-        // SINKRONISASI DATA PROFILE UTAMA
         const DATA_PROFILE = {
             nama: "BAGAS ARYA PUTRA",
-            tagline: "GENERALIST",
+            tagline: "GENERALIST & LIFELONG LEARNER",
             kontak: "Jl.Gubeng Jaya Langgar No.7A, Gubeng, Surabaya | ba6422977@gmail.com | 082171123965",
-            ringkasan: "Lulusan SMKN 1 Trenggalek jurusan Teknik Instalasi Tenaga Listrik. Memiliki beberapa pengalaman antara lain sebagai Teknisi Listrik dan Kitchen Crew, dan sudah mengikuti Pendidikan Gada Pratama. Selalu bersemangat untuk menghadapi tantangan baru, terus meningkatkan kemampuan dan secara proaktif mencari peluang untuk pengembangan diri."
+            ringkasan: "Saya adalah seorang Generalist yang memiliki pemahaman dasar di berbagai bidang, mulai dari operasional F&B, kelistrikan, hingga keamanan. Keunggulan saya terletak pada kemampuan beradaptasi dan pemecahan masalah lintas disiplin; misalnya, saya dapat turun tangan menangani kendala kelistrikan ringan atau merespons darurat keamanan saat bertugas di area kerja lain. Di luar jam kerja, saya adalah pembelajar mandiri yang gemar menghabiskan waktu di perpustakaan, saat ini sedang mempelajari Coding/Pemrograman dasar, dan aktif menempuh pendidikan S1 Ilmu Komunikasi di Universitas Terbuka."
         };
 
-        // INTEGRASI RIWAYAT PENGALAMAN 
         const DATA_PENGALAMAN = [
             {
                 waktu: "Mei 2025 - Januari 2026",
                 posisi: "Kitchen Crew - Karyawan Tetap",
                 tempat: "Pendopo Garden Cafe & Eatery - Trenggalek",
-                detail: "• Bertanggung jawab penuh atas kebersihan sanitasi dan higienitas area kitchen.\n• Melakukan produksi bahan dasar masakan dan eksekusi menu."
+                detail: "• Bertanggung jawab atas kebersihan area kitchen dan produksi dasar masakan.\n• Mampu mengidentifikasi dan menangani masalah operasional dasar lintas bidang di area kerja secara proaktif."
             },
             {
                 waktu: "Januari 2025 - April 2025",
-                posisi: "Teknisi Listrik Departemen Pemrosesan Minyak Kelapa - Karyawan Kontrak",
+                posisi: "Teknisi Listrik (Karyawan Kontrak)",
                 tempat: "PT Pulau Sambu Guntung - Riau",
-                detail: "• Bertanggung jawab penuh terhadap pengawasan, stabilitas, dan perbaikan seluruh komponen mesin kelistrikan.\n• Menjalankan pemeliharaan preventif dan inspeksi berkala."
+                detail: "• Membantu pengawasan dan perbaikan dasar pada komponen mesin kelistrikan.\n• Ikut serta dalam pemeliharaan dan inspeksi berkala di lingkungan industri."
             },
             {
                 waktu: "September 2024 - November 2024",
-                posisi: "Tenaga Produksi Property Aluminium & Kaca - Daily Worker",
+                posisi: "Tenaga Produksi Aluminium & Kaca (Daily Worker)",
                 tempat: "Surya Abadi Glass - Trenggalek",
-                detail: "• Melakukan kalkulasi material teknik, pemotongan, perakitan, dan pengiriman properti berbasis aluminium dan kaca arsitektur."
+                detail: "• Membantu pemotongan, perakitan, dan persiapan pengiriman properti berbasis aluminium dan kaca."
             },
             {
                 waktu: "Juli 2024 - September 2024",
-                posisi: "Karyawan Toko ATK & Fotocopy - Daily Worker",
+                posisi: "Karyawan Toko ATK & Fotocopy (Daily Worker)",
                 tempat: "BUMDES Sugiharto - Trenggalek",
-                detail: "• Mengelola layanan pelanggan retail alat tulis kantor, operasional mesin fotokopi/printer, dan penyelesaian proyek digital perkantoran."
+                detail: "• Melayani pelanggan toko alat tulis, mengoperasikan mesin fotokopi, dan membantu pengetikan."
             },
             {
                 waktu: "Juli 2023 - Oktober 2023",
-                posisi: "Helper Teknisi & Office Boy - Praktik Kerja Lapangan",
+                posisi: "Helper Teknisi & Office Boy (Praktik Kerja Lapangan)",
                 tempat: "PT PLN ULP Trenggalek",
-                detail: "• Terlibat aktif membantu tugas teknisi lapangan dan menjaga operasional kantor sebagai office boy."
+                detail: "• Membantu tugas teknisi kelistrikan di lapangan sekaligus menjaga kebersihan operasional kantor."
             }
         ];
 
-        // DATA PROYEK LENGKAP METADATA (DAPAT DIEDIT APABILA ADA PERUBAHAN)
         const DATA_PROYEK = [
             {
-                tag: "Security Operational",
-                judul: "Implementasi Sistem Turjawali & Tanggap Darurat",
-                desc: "Penerapan standar operasional prosedur kepolisian terbatas mencakup simulasi patroli keamanan wilayah, bela diri taktis Polri, dan sterilisasi area kerja perimeter luar.",
-                status: "Completed",
-                tools: ["Beladiri Taktis", "SOP Turjawali", "K3 Keamanan"],
-                img: "projek-security.jpg"
-            },
-            {
-                tag: "Industrial Electrical",
-                judul: "Maintenance & Rewiring Panel Distribusi 3-Phase",
-                desc: "Proyek pemeliharaan dan audit kelistrikan preventif pada motor induksi dan sirkuit panel kontrol utama pengolahan minyak industri guna mencegah overheating dan short circuit.",
-                status: "Active Maintenance",
-                tools: ["Multitester", "Wiring Diagram", "Panel 3-Phase"],
-                img: "projek-listrik.jpg"
-            },
-            {
-                tag: "Culinary Management",
-                judul: "Kitchen Production System & High-Volume Plating",
-                desc: "Optimasi alur kerja stasiun penggorengan dapur komersial, mempercepat waktu tunggu saji menu hingga 15%, sambil mempertahankan kepatuhan sanitasi ketat pangan.",
-                status: "Production Ready",
-                tools: ["Wok Operation", "HACCP Basics", "Food Styling"],
+                tag: "Problem Solving",
+                judul: "Pemecahan Masalah Terintegrasi",
+                desc: "Memanfaatkan keahlian dasar lintas bidang. Mampu melakukan perbaikan listrik ringan atau mitigasi risiko darurat (seperti antisipasi kebakaran) saat bertugas di operasional F&B maupun sektor lainnya.",
+                status: "Generalist",
+                tools: ["Basic Electrical", "Security SOP", "Adaptability"],
                 img: "projek-masak.jpg"
+            },
+            {
+                tag: "Self-Development",
+                judul: "Pembelajaran Mandiri & Coding",
+                desc: "Memanfaatkan waktu luang secara produktif di perpustakaan untuk mempelajari hal-hal baru, termasuk pemahaman dasar logika pemrograman (coding) guna memperluas wawasan digital.",
+                status: "Ongoing",
+                tools: ["Library Research", "Basic Coding", "Self-Taught"],
+                img: "projek-listrik.jpg" 
             }
         ];
 
-        // DATA PENDIDIKAN DAN PELATIHAN
         const DATA_PENDIDIKAN = [
+            { kapan: "Saat ini", di: "Universitas Terbuka (Formal)", spesialisasi: "S1 Ilmu Komunikasi (Sedang Menempuh Pendidikan)" },
             { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Jurusan Teknik Instalasi Tenaga Listrik | Nilai rata-rata 86,41" },
             { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Non Formal)", spesialisasi: "Pendidikan Satpam Gada Pratama" }
         ];
 
-        // DAFTAR SKILLS UNTUK PORTFOLIO DAN ATS CV
-        const HARD_SKILLS = ["Basic F&B", "OSINT", "Kelistrikan", "Security", "Bahasa Inggris Dasar"];
-        const SOFT_SKILLS = ["Tetap tenang dibawah tekanan", "Disiplin dan Produktif", "Jarang Sakit", "Bertanggung Jawab", "Penerapan Kebersihan dan Kerapian"];
+        const HARD_SKILLS = ["Basic F&B", "Dasar Kelistrikan", "SOP Keamanan / Security", "Dasar Coding / Pemrograman", "Bahasa Inggris Dasar", "OSINT"];
+        const SOFT_SKILLS = ["Generalist (Serba Bisa)", "Problem Solving Lintas Bidang", "Pembelajar Mandiri", "Tetap Tenang di Bawah Tekanan", "Bertanggung Jawab"];
 
-        // ==========================================
-        // AUTOMATED DOM INJECTION CONTROLLER
-        // ==========================================
         document.getElementById('dyn-name').innerText = DATA_PROFILE.nama;
         document.getElementById('dyn-tagline').innerText = DATA_PROFILE.tagline;
         document.getElementById('dyn-summary').innerText = DATA_PROFILE.ringkasan;
@@ -480,7 +437,7 @@
                 <div class="project-card">
                     <div class="project-img-box">
                         <span class="p-status">${p.status}</span>
-                        <img src="${p.img}" alt="${p.judul}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500';">
+                        <img src="${p.img}" alt="${p.judul}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';">
                     </div>
                     <div class="project-info">
                         <span class="tag">${p.tag}</span>
@@ -501,9 +458,6 @@
         document.getElementById('dyn-hardskills').innerHTML = HARD_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
         document.getElementById('dyn-softskills').innerHTML = SOFT_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
 
-        // ==========================================
-        // INTEGRASI INTERFACE MODAL DATA CV ATS
-        // ==========================================
         document.getElementById('cv-name').innerText = DATA_PROFILE.nama;
         document.getElementById('cv-contact').innerText = DATA_PROFILE.kontak;
         document.getElementById('cv-summary').innerText = DATA_PROFILE.ringkasan;
@@ -524,7 +478,6 @@
             <div><b>Hard Skills Kompetensi:</b><br>${HARD_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>
             <div><b>Soft Skills & Karakter:</b><br>${SOFT_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>`;
 
-        // MODAL TOGGLE CONTROLLER
         function openCV() { document.getElementById('cvOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeCV() { document.getElementById('cvOverlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
         window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
