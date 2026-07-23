@@ -210,7 +210,6 @@
                 <div class="profile-frame">
                     <img src="foto-bagas.jpg" alt="Bagas Arya Putra">
                 </div>
-                <!-- Status badge dinamis, mencerminkan lo siap kerja -->
                 <div class="status-badge">Ready to Hire</div>
             </div>
             <h1 id="dyn-name">Loading Name...</h1>
@@ -355,7 +354,7 @@
                 <p id="cv-contact">Loading...</p>
             </div>
             <div class="cv-sec">
-                <h2>Ringkasan Profesional</h2>
+                <h2>Objektif / Ringkasan Profesional</h2>
                 <p id="cv-summary">Loading...</p>
             </div>
             <div class="cv-sec">
@@ -381,48 +380,54 @@
          DATA CONTROLLER & JAVASCRIPT ENGINE
          ========================================== -->
     <script>
-        // SINKRONISASI DATA PROFILE UTAMA[cite: 1]
+        // SINKRONISASI DATA PROFILE UTAMA
         const DATA_PROFILE = {
             nama: "BAGAS ARYA PUTRA",
-            tagline: "Gada Pratama Security Officer | Electrical Systems Technician | Professional Culinary Cook",
-            kontak: "Krajan 03/01, Desa Tegaren, Kec. Tugu, Kab. Trenggalek 66352 | ba6422977@gmail.com | 082171123965",
-            ringkasan: "Lulusan SMKN 1 Trenggalek bidang keahlian Teknik Instalasi Tenaga Listrik. Berpengalaman lintas industri sebagai Teknisi Listrik Pabrik, Junior Cook Komersial, serta telah menempuh Pendidikan Sertifikasi Satpam Gada Pratama resmi Polri[cite: 1]. Memiliki dedikasi tinggi terhadap kedisiplinan operasional, keamanan fisik aset, serta efisiensi perawatan kelistrikan industri[cite: 1]."
+            tagline: "GENERALIST",
+            kontak: "Jl.Gubeng Jaya Langgar No.7A, Gubeng, Surabaya | ba6422977@gmail.com | 082171123965",
+            ringkasan: "Lulusan SMKN 1 Trenggalek jurusan Teknik Instalasi Tenaga Listrik. Memiliki beberapa pengalaman antara lain sebagai Teknisi Listrik dan Kitchen Crew, dan sudah mengikuti Pendidikan Gada Pratama. Selalu bersemangat untuk menghadapi tantangan baru, terus meningkatkan kemampuan dan secara proaktif mencari peluang untuk pengembangan diri."
         };
 
-        // INTEGRASI RIWAYAT PENGALAMAN[cite: 1]
+        // INTEGRASI RIWAYAT PENGALAMAN 
         const DATA_PENGALAMAN = [
             {
                 waktu: "Mei 2025 - Januari 2026",
-                posisi: "Commis 2 (Junior Cook) - Full Time Employee",
+                posisi: "Kitchen Crew - Karyawan Tetap",
                 tempat: "Pendopo Garden Cafe & Eatery - Trenggalek",
-                detail: "• Bertanggung jawab penuh atas kebersihan sanitasi dan higienitas area *hot kitchen* komersial[cite: 1].\n• Melakukan efisiensi produksi bahan dasar masakan, eksekusi menu koki, manajemen stok bumbu, serta pengoperasian teknik memasak wok kecepatan tinggi[cite: 1]."
+                detail: "• Bertanggung jawab penuh atas kebersihan sanitasi dan higienitas area kitchen.\n• Melakukan produksi bahan dasar masakan dan eksekusi menu."
             },
             {
                 waktu: "Januari 2025 - April 2025",
-                posisi: "Electrical Maintenance Technician - Contract Employee",
+                posisi: "Teknisi Listrik Departemen Pemrosesan Minyak Kelapa - Karyawan Kontrak",
                 tempat: "PT Pulau Sambu Guntung - Riau",
-                detail: "• Bertanggung jawab penuh terhadap pengawasan, stabilitas, dan perbaikan seluruh komponen mesin kelistrikan di Departemen Pemrosesan Minyak Kelapa[cite: 1].\n• Menjalankan pemeliharaan preventif, inspeksi berkala panel distribusi, penanganan kendala *abnormal event*, serta penataan kabel sirkuit pabrik[cite: 1]."
+                detail: "• Bertanggung jawab penuh terhadap pengawasan, stabilitas, dan perbaikan seluruh komponen mesin kelistrikan.\n• Menjalankan pemeliharaan preventif dan inspeksi berkala."
             },
             {
                 waktu: "September 2024 - November 2024",
-                posisi: "Fabrication & Assembly Worker - Daily Worker",
+                posisi: "Tenaga Produksi Property Aluminium & Kaca - Daily Worker",
                 tempat: "Surya Abadi Glass - Trenggalek",
-                detail: "• Melakukan kalkulasi material teknik, pemotongan, perakitan, dan pengiriman properti berbasis aluminium dan kaca arsitektur[cite: 1]."
+                detail: "• Melakukan kalkulasi material teknik, pemotongan, perakitan, dan pengiriman properti berbasis aluminium dan kaca arsitektur."
             },
             {
                 waktu: "Juli 2024 - September 2024",
-                posisi: "Store Clerk & Printing Assistant - Daily Worker",
+                posisi: "Karyawan Toko ATK & Fotocopy - Daily Worker",
                 tempat: "BUMDES Sugiharto - Trenggalek",
-                detail: "• Mengelola layanan pelanggan retail alat tulis kantor, operasional mesin fotokopi/printer berkapasitas besar, dan penyelesaian proyek digital perkantoran[cite: 1]."
+                detail: "• Mengelola layanan pelanggan retail alat tulis kantor, operasional mesin fotokopi/printer, dan penyelesaian proyek digital perkantoran."
+            },
+            {
+                waktu: "Juli 2023 - Oktober 2023",
+                posisi: "Helper Teknisi & Office Boy - Praktik Kerja Lapangan",
+                tempat: "PT PLN ULP Trenggalek",
+                detail: "• Terlibat aktif membantu tugas teknisi lapangan dan menjaga operasional kantor sebagai office boy."
             }
         ];
 
-        // DATA PROYEK LENGKAF METADATA (DAPAT DIEDIT APABILA ADA PERUBAHAN)
+        // DATA PROYEK LENGKAP METADATA (DAPAT DIEDIT APABILA ADA PERUBAHAN)
         const DATA_PROYEK = [
             {
                 tag: "Security Operational",
                 judul: "Implementasi Sistem Turjawali & Tanggap Darurat",
-                desc: "Penerapan standar operasional prosedur kepolisian terbatas mencakup simulasi patroli keamanan wilayah, bela diri taktis Polri, dan sterilisasi area kerja perimeter luar[cite: 1].",
+                desc: "Penerapan standar operasional prosedur kepolisian terbatas mencakup simulasi patroli keamanan wilayah, bela diri taktis Polri, dan sterilisasi area kerja perimeter luar.",
                 status: "Completed",
                 tools: ["Beladiri Taktis", "SOP Turjawali", "K3 Keamanan"],
                 img: "projek-security.jpg"
@@ -430,7 +435,7 @@
             {
                 tag: "Industrial Electrical",
                 judul: "Maintenance & Rewiring Panel Distribusi 3-Phase",
-                desc: "Proyek pemeliharaan dan audit kelistrikan preventif pada motor induksi dan sirkuit panel kontrol utama pengolahan minyak industri guna mencegah *overheating* dan *short circuit*[cite: 1].",
+                desc: "Proyek pemeliharaan dan audit kelistrikan preventif pada motor induksi dan sirkuit panel kontrol utama pengolahan minyak industri guna mencegah overheating dan short circuit.",
                 status: "Active Maintenance",
                 tools: ["Multitester", "Wiring Diagram", "Panel 3-Phase"],
                 img: "projek-listrik.jpg"
@@ -438,22 +443,22 @@
             {
                 tag: "Culinary Management",
                 judul: "Kitchen Production System & High-Volume Plating",
-                desc: "Optimasi alur kerja stasiun penggorengan dapur komersial, mempercepat waktu tunggu saji menu hingga 15%, sambil mempertahankan kepatuhan sanitasi ketat pangan[cite: 1].",
+                desc: "Optimasi alur kerja stasiun penggorengan dapur komersial, mempercepat waktu tunggu saji menu hingga 15%, sambil mempertahankan kepatuhan sanitasi ketat pangan.",
                 status: "Production Ready",
                 tools: ["Wok Operation", "HACCP Basics", "Food Styling"],
                 img: "projek-masak.jpg"
             }
         ];
 
-        // DATA PENDIDIKAN DAN PELATIHAN[cite: 1]
+        // DATA PENDIDIKAN DAN PELATIHAN
         const DATA_PENDIDIKAN = [
-            { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Teknik Instalasi Tenaga Listrik | Rata-rata Nilai Kelulusan 86,41[cite: 1]" },
-            { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Pelatihan Resmi)", spesialisasi: "Pendidikan Satpam Kualifikasi Gada Pratama Polda Jatim[cite: 1]" }
+            { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Jurusan Teknik Instalasi Tenaga Listrik | Nilai rata-rata 86,41" },
+            { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Non Formal)", spesialisasi: "Pendidikan Satpam Gada Pratama" }
         ];
 
-        // DAFTAR SKILLS UNTUK PORTFOLIO DAN ATS CV[cite: 1]
-        const HARD_SKILLS = ["Beladiri Taktis Polri", "Instalasi Listrik Industri", "SOP Turjawali", "Operasional Wok Dapur", "Microsoft Office & Dokumen", "Panel Distribusi Listrik"];
-        const SOFT_SKILLS = ["Disiplin & Ketepatan Waktu", "Ketahanan Tekanan Tinggi", "Komunikasi Taktis", "Mudah Beradaptasi Lintas Sektor", "Manajemen Higienitas Kerja"];
+        // DAFTAR SKILLS UNTUK PORTFOLIO DAN ATS CV
+        const HARD_SKILLS = ["Basic F&B", "OSINT", "Kelistrikan", "Security", "Bahasa Inggris Dasar"];
+        const SOFT_SKILLS = ["Tetap tenang dibawah tekanan", "Disiplin dan Produktif", "Jarang Sakit", "Bertanggung Jawab", "Penerapan Kebersihan dan Kerapian"];
 
         // ==========================================
         // AUTOMATED DOM INJECTION CONTROLLER
