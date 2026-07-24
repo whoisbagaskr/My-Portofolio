@@ -1,193 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bagas Arya Putra | Professional Showcase Portfolio</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- SEO & Link Preview Meta Tags -->
+    <title>Bagas Arya Putra | Professional Showcase</title>
+    <meta name="description" content="Portfolio of Bagas Arya Putra - A Generalist & Lifelong Learner">
+    <meta property="og:title" content="Bagas Arya Putra | Professional Portfolio">
+    <meta property="og:description" content="Generalist, Problem Solver, and Lifelong Learner. View my complete track record and ATS CV here.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         /* ==========================================================================
-           1. CORE PREMIUM NEON ARCHITECTURE (ROOT STYLE)
+           1. CORE DESIGN TOKENS (DARK & LIGHT MODE)
            ========================================================================== */
         :root {
-            --bg-dark: #06060f;
+            /* DARK MODE (Default) */
+            --bg-base: #06060f;
             --bg-card: #0b0b1e;
-            --border-neon: #1b1b3a;
-            --text-main: #ffffff;
+            --bg-card-hover: #12122b;
+            --border-color: #1b1b3a;
+            --border-hover: #0ea5e9;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --cyan: #00f5d4;
-            --blue: #3a86ff;
-            --purple: #7209b7;
-            --green: #8ac926;
-            --neon-glow: 0 0 25px rgba(0, 245, 212, 0.25);
+            --accent: #00f5d4;
+            --accent-hover: #00d1b5;
+            --secondary: #3a86ff;
+            --success: #8ac926;
+            --glass-bg: rgba(11, 11, 30, 0.7);
+            --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            --glow-neon: 0 0 25px rgba(0, 245, 212, 0.25);
+        }
+
+        [data-theme="light"] {
+            /* LIGHT MODE */
+            --bg-base: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-hover: #0284c7;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --secondary: #4338ca;
+            --success: #16a34a;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --shadow-subtle: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            --glow-neon: 0 10px 25px rgba(2, 132, 199, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
             padding: 50px 20px;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; position: relative; }
 
         /* ==========================================================================
-           2. HEADER & PROFILE DISPLAY
+           2. FLOATING CONTROLS (THEME & LANG)
            ========================================================================== */
-        header { 
-            text-align: center; 
-            margin-bottom: 60px;
-            position: relative;
+        .controls-panel {
+            position: fixed; top: 20px; right: 20px;
+            display: flex; gap: 10px; z-index: 100;
+            background: var(--glass-bg); backdrop-filter: blur(10px);
+            padding: 8px 12px; border-radius: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
         }
-        .profile-wrapper {
-            position: relative;
-            width: 150px; height: 150px;
-            margin: 0 auto 25px;
+        .ctrl-btn {
+            background: transparent; border: none;
+            color: var(--text-main); font-size: 1.1rem;
+            cursor: pointer; padding: 5px 10px;
+            border-radius: 20px; font-weight: 700; font-family: 'Inter';
+            transition: 0.3s ease;
         }
+        .ctrl-btn:hover { background: var(--border-color); color: var(--accent); }
+        .ctrl-btn.active { color: var(--accent); }
+
+        /* ==========================================================================
+           3. HEADER & PROFILE
+           ========================================================================== */
+        header { text-align: center; margin-bottom: 60px; animation: fadeIn 0.8s ease; }
+        .profile-wrapper { position: relative; width: 140px; height: 140px; margin: 0 auto 25px; }
         .profile-frame {
-            width: 100%; height: 100%; border-radius: 50%;
-            overflow: hidden; border: 3px solid var(--cyan);
-            box-shadow: 0 0 35px rgba(0, 245, 212, 0.35);
-            background: #12122b; display: flex; justify-content: center; align-items: center;
+            width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+            border: 3px solid var(--accent); box-shadow: var(--glow-neon);
+            background: var(--border-color);
         }
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
-        
         .status-badge {
-            position: absolute; bottom: 5px; right: 5px;
-            background: var(--green); color: #000; font-size: 0.75rem;
-            font-weight: 800; padding: 4px 10px; border-radius: 20px;
-            box-shadow: 0 0 10px var(--green); text-transform: uppercase;
+            position: absolute; bottom: 0; right: -10px;
+            background: var(--success); color: #fff; font-size: 0.75rem;
+            font-weight: 800; padding: 6px 12px; border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         header h1 {
-            font-size: 3.2rem; font-weight: 800; letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff 40%, var(--cyan));
+            font-size: 3rem; font-weight: 800; letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
         }
-        header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; max-width: 600px; margin: 0 auto 25px; }
+        header p { color: var(--text-muted); font-size: 1.15rem; font-weight: 500; margin-bottom: 25px; }
 
-        /* Action Buttons */
-        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn { padding: 12px 26px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
-        .btn-primary { background: var(--cyan); color: #000; border: none; }
-        .btn-primary:hover { background: #00d1b5; transform: translateY(-2px); box-shadow: var(--neon-glow); }
-        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border-neon); }
-        .btn-secondary:hover { background: var(--border-neon); transform: translateY(-2px); }
+        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .btn {
+            padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary { background: var(--accent); color: #06060f; border: none; box-shadow: var(--shadow-subtle); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--glow-neon); }
+        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { border-color: var(--accent); transform: translateY(-3px); }
 
         /* ==========================================================================
-           3. MAIN GRID LAYOUT
+           4. MAIN GRID & CARDS
            ========================================================================== */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 35px;
-        }
-
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
-        }
+        .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; animation: slideUp 0.8s ease; }
+        @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 
         .section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-neon);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 35px;
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 35px; margin-bottom: 30px;
+            box-shadow: var(--shadow-subtle); transition: border 0.3s ease;
         }
+        .section:hover { border-color: rgba(14, 165, 233, 0.3); }
 
         .section-title {
-            font-size: 1.4rem; color: #fff; margin-bottom: 25px;
-            display: flex; align-items: center; gap: 12px;
+            font-size: 1.25rem; font-weight: 700; color: var(--text-main);
+            margin-bottom: 25px; display: flex; align-items: center; gap: 12px;
             text-transform: uppercase; letter-spacing: 1px;
         }
-        .section-title::before {
-            content: ''; display: inline-block; width: 4px; height: 22px; background: var(--cyan); border-radius: 2px;
-            box-shadow: 0 0 10px var(--cyan);
-        }
+        .section-title::before { content: ''; display: block; width: 4px; height: 20px; background: var(--accent); border-radius: 4px; }
 
-        /* ==========================================================================
-           4. PORTFOLIO COMPONENT STYLES
-           ========================================================================= */
-        
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 10px; }
-        .service-card { background: #070716; border: 1px solid var(--border-neon); padding: 20px; border-radius: 12px; transition: border 0.3s; }
-        .service-card:hover { border-color: var(--blue); }
-        .service-card .icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
-        .service-card h4 { color: #fff; margin-bottom: 8px; font-size: 1.05rem; }
+        /* Generalist Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .service-card {
+            background: var(--bg-base); border: 1px solid var(--border-color);
+            padding: 20px; border-radius: 12px; transition: all 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--glow-neon); }
+        .service-card .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+        .service-card h4 { color: var(--text-main); margin-bottom: 6px; font-size: 1.05rem; }
         .service-card p { color: var(--text-muted); font-size: 0.85rem; }
 
-        .milestone-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin-bottom: 10px; }
-        .milestone-item { background: linear-gradient(180deg, #0f0f2d, #070716); border: 1px solid var(--border-neon); padding: 15px; border-radius: 12px; }
-        .milestone-item .num { font-size: 1.8rem; font-weight: 800; color: var(--cyan); display: block; text-shadow: var(--neon-glow); }
-        .milestone-item .lbl { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
-
+        /* Project Cards */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .project-card { background: #060616; border: 1px solid var(--border-neon); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--cyan); box-shadow: var(--neon-glow); }
-        .project-img-box { width: 100%; height: 160px; background: #101026; overflow: hidden; position: relative; }
-        .project-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .project-card:hover .project-img-box img { transform: scale(1.05); }
-        
-        .p-status { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.75); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: var(--cyan); border: 1px solid var(--cyan); }
-        
+        .project-card {
+            background: var(--bg-base); border: 1px solid var(--border-color);
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow-subtle); }
+        .project-img-box { width: 100%; height: 160px; overflow: hidden; position: relative; }
+        .project-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .project-img-box img { transform: scale(1.08); }
+        .p-status { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.8); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; color: #00f5d4; border: 1px solid #00f5d4; backdrop-filter: blur(4px); }
         .project-info { padding: 20px; flex-grow: 1; }
-        .project-info .tag { color: var(--purple); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: inline-block; }
-        .project-info h3 { font-size: 1.15rem; color: #fff; margin-bottom: 8px; }
-        .project-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }
+        .project-info .tag { color: var(--secondary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .project-info h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px; }
+        .project-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; }
         .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
-        .project-tools span { font-size: 0.7rem; background: #141433; color: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid #22224c; }
+        .project-tools span { font-size: 0.7rem; background: var(--bg-card); color: var(--text-main); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border-color); font-weight: 500; }
 
-        .doc-list { display: flex; flex-direction: column; gap: 12px; }
-        .doc-item { display: flex; align-items: center; justify-content: space-between; background: #070716; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border-neon); }
-        .doc-info { display: flex; align-items: center; gap: 12px; }
-        .doc-icon { font-size: 1.4rem; }
-        .doc-name { font-size: 0.9rem; color: #fff; font-weight: 500; }
-        .doc-issuer { font-size: 0.75rem; color: var(--text-muted); }
-        .btn-view-doc { font-size: 0.8rem; color: var(--cyan); text-decoration: none; font-weight: 600; border: 1px solid var(--cyan); padding: 4px 10px; border-radius: 6px; background: transparent; transition: 0.2s; }
-        .btn-view-doc:hover { background: rgba(0,245,212,0.1); }
-
-        .timeline { border-left: 2px solid var(--border-neon); padding-left: 25px; margin-left: 5px; }
-        .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: var(--blue); box-shadow: 0 0 10px var(--blue); }
-        .time-badge { display: inline-block; background: rgba(58, 134, 255, 0.1); color: var(--blue); padding: 2px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; }
-        .timeline-item h3 { color: #fff; font-size: 1.2rem; }
-        .timeline-item h4 { color: var(--cyan); font-size: 0.95rem; margin-bottom: 8px; font-weight: 600; }
+        /* Timeline (Experience) */
+        .timeline { border-left: 2px solid var(--border-color); padding-left: 25px; margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 35px; }
+        .timeline-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: var(--secondary); outline: 4px solid var(--bg-card); }
+        .time-badge { display: inline-block; background: rgba(58, 134, 255, 0.1); color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(58, 134, 255, 0.2); }
+        .timeline-item h3 { color: var(--text-main); font-size: 1.15rem; font-weight: 700; }
+        .timeline-item h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 8px; font-weight: 500; }
         .timeline-item p { color: var(--text-muted); font-size: 0.9rem; white-space: pre-line; }
 
-        .skill-box { margin-bottom: 20px; }
-        .skill-box h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+        /* Right Column Docs & Tags */
+        .doc-list { display: flex; flex-direction: column; gap: 12px; }
+        .doc-item { display: flex; align-items: center; justify-content: space-between; background: var(--bg-base); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .doc-item:hover { border-color: var(--accent); }
+        .doc-info { display: flex; align-items: flex-start; gap: 15px; }
+        .doc-icon { font-size: 1.5rem; line-height: 1; }
+        .doc-name { font-size: 0.95rem; color: var(--text-main); font-weight: 600; }
+        .doc-issuer { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+        .btn-view-doc { font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 600; border: 1px solid var(--accent); padding: 6px 14px; border-radius: 6px; transition: 0.2s; }
+        .btn-view-doc:hover { background: var(--accent); color: var(--bg-base); }
+
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag-item { background: #161633; border: 1px solid var(--border-neon); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 500; }
+        .tag-item { background: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-main); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; transition: 0.2s; }
+        .tag-item:hover { border-color: var(--secondary); color: var(--secondary); }
 
         /* ==========================================================================
-           5. MODAL ATS SYSTEM INTERFACE
+           5. MODAL ATS SYSTEM INTERFACE & PRINT CSS
            ========================================================================== */
-        .cv-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3,3,10,0.92); backdrop-filter: blur(6px); z-index: 999; display: none; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 40px 20px; }
-        .cv-document { background: #ffffff; color: #1e293b; width: 100%; max-width: 800px; padding: 50px; border-radius: 4px; position: relative; font-family: 'Arial', sans-serif; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        .cv-close { position: absolute; top: 20px; right: 20px; background: #ef4444; color: white; border: none; padding: 6px 14px; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        .cv-header { border-bottom: 2px solid #334155; padding-bottom: 15px; margin-bottom: 25px; text-align: center; }
-        .cv-header h1 { font-size: 2.2rem; color: #0f172a; text-transform: uppercase; }
-        .cv-header p { color: #475569; font-size: 0.95rem; font-weight: bold; margin-top: 5px; }
+        .cv-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 999; display: none; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 40px 20px; opacity: 0; transition: opacity 0.3s ease; }
+        .cv-overlay.show { opacity: 1; }
+        .cv-document { background: #ffffff; color: #0f172a; width: 100%; max-width: 800px; padding: 50px; border-radius: 8px; position: relative; font-family: 'Arial', sans-serif; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .cv-close { position: absolute; top: 20px; right: 20px; background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .cv-close:hover { background: #dc2626; }
+        .cv-header { border-bottom: 2px solid #334155; padding-bottom: 20px; margin-bottom: 25px; text-align: center; }
+        .cv-header h1 { font-size: 2.2rem; color: #0f172a; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px; }
+        .cv-header p { color: #475569; font-size: 0.95rem; font-weight: 600; }
         .cv-sec { margin-bottom: 25px; }
-        .cv-sec h2 { font-size: 1.15rem; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 12px; text-transform: uppercase; }
-        .cv-line { display: flex; justify-content: space-between; font-weight: bold; color: #1e293b; font-size: 0.9rem; margin-top: 8px; }
-        .cv-subline { display: flex; justify-content: space-between; color: #475569; font-style: italic; font-size: 0.85rem; margin-bottom: 3px; }
-        .cv-sec p { color: #334155; font-size: 0.85rem; text-align: justify; line-height: 1.5; white-space: pre-line; }
+        .cv-sec h2 { font-size: 1.1rem; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; margin-bottom: 12px; text-transform: uppercase; font-weight: 700; }
+        .cv-line { display: flex; justify-content: space-between; font-weight: 700; color: #1e293b; font-size: 0.9rem; margin-top: 10px; }
+        .cv-subline { display: flex; justify-content: space-between; color: #475569; font-style: italic; font-size: 0.85rem; margin-bottom: 5px; }
+        .cv-sec p { color: #334155; font-size: 0.85rem; text-align: justify; line-height: 1.6; white-space: pre-line; }
 
         @media print {
             body * { visibility: hidden; }
             .cv-overlay, .cv-overlay * { visibility: visible; }
-            .cv-overlay { position: absolute; left: 0; top: 0; width: 100%; background: white; padding: 0; display: flex !important; }
-            .cv-document { box-shadow: none; padding: 0; width: 100%; max-width: 100%; }
-            .cv-close { display: none; }
+            .cv-overlay { position: absolute; left: 0; top: 0; width: 100%; background: white; padding: 0; display: block !important; opacity: 1; }
+            .cv-document { box-shadow: none; padding: 0; margin: 0; width: 100%; max-width: 100%; }
+            .cv-close, .controls-panel { display: none !important; }
         }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
+
+    <!-- Floating Theme & Language Controls -->
+    <div class="controls-panel">
+        <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">ID</button>
+        <div style="width: 1px; background: var(--border-color); margin: 0 5px;"></div>
+        <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </div>
 
     <div class="container">
         <!-- HEADER SECTION -->
@@ -196,15 +249,15 @@
                 <div class="profile-frame">
                     <img src="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg" alt="Bagas Arya Putra">
                 </div>
-                <div class="status-badge">Ready to Hire</div>
+                <div class="status-badge" id="t-status">Ready to Hire</div>
             </div>
-            <h1 id="dyn-name">Loading Name...</h1>
-            <p id="dyn-tagline">Loading Tagline...</p>
+            <h1 id="t-name">BAGAS ARYA PUTRA</h1>
+            <p id="t-tagline">Loading...</p>
             
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openCV()">📄 Lihat & Cetak CV ATS</button>
-                <a class="btn btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=ba6422977@gmail.com" target="_blank">📧 Email Utama</a>
-                <a class="btn btn-secondary" href="https://api.whatsapp.com/send?phone=6282171123965&text=Halo%20Bagas,%20saya%20tertarik%20dengan%20portofolio%20Anda." target="_blank">💬 WhatsApp Hubungi</a>
+                <button class="btn btn-primary" onclick="openCV()" id="t-btnCV">📄 Lihat & Cetak CV ATS</button>
+                <a class="btn btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=ba6422977@gmail.com" target="_blank" id="t-btnEmail">📧 Email Utama</a>
+                <a class="btn btn-secondary" id="wa-link" href="#" target="_blank">💬 WhatsApp</a>
             </div>
         </header>
 
@@ -213,330 +266,324 @@
             
             <!-- KOLOM KIRI -->
             <div class="left-col">
-                
                 <div class="section">
-                    <div class="section-title">Keahlian Lintas Bidang (Generalist)</div>
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <span class="icon">🍳</span>
-                            <h4>F&B & Operasional</h4>
-                            <p>Memahami dasar operasional dapur dan standar kebersihan (F&B). Mampu beradaptasi cepat dengan alur kerja di lapangan.</p>
-                        </div>
-                        <div class="service-card">
-                            <span class="icon">⚡</span>
-                            <h4>Dasar Kelistrikan</h4>
-                            <p>Punya *basic* kelistrikan. Sangat membantu untuk cek awal dan perbaikan ringan jika ada kendala instalasi saat sedang bekerja.</p>
-                        </div>
-                        <div class="service-card">
-                            <span class="icon">🛡️</span>
-                            <h4>SOP Keamanan</h4>
-                            <p>Mengetahui prosedur keamanan dasar, mitigasi pencegahan kejahatan, dan tanggap darurat seperti penanganan awal kebakaran.</p>
-                        </div>
-                    </div>
+                    <div class="section-title" id="t-sec-generalist">Keahlian Lintas Bidang (Generalist)</div>
+                    <div class="services-grid" id="dyn-generalist"></div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Aplikasi Keahlian Lintas Disiplin</div>
+                    <div class="section-title" id="t-sec-projects">Aplikasi Keahlian Lintas Disiplin</div>
                     <div class="project-grid" id="dyn-projects"></div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Rekam Jejak Karier</div>
+                    <div class="section-title" id="t-sec-exp">Rekam Jejak Karier</div>
                     <div class="timeline" id="dyn-experience"></div>
                 </div>
             </div>
 
             <!-- KOLOM KANAN -->
             <div class="right-col">
-                
                 <div class="section">
-                    <div class="section-title">Ringkasan Kerja</div>
-                    <div class="milestone-bar">
-                        <div class="milestone-item">
-                            <span class="num">2+</span>
-                            <span class="lbl">Tahun Kerja</span>
-                        </div>
-                        <div class="milestone-item">
-                            <span class="num">4+</span>
-                            <span class="lbl">Sektor Usaha</span>
-                        </div>
-                        <div class="milestone-item">
-                            <span class="num">100%</span>
-                            <span class="lbl">Adaptif</span>
-                        </div>
-                    </div>
+                    <div class="section-title" id="t-sec-about">Tentang Saya</div>
+                    <p id="t-summary" style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;"></p>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Tentang Saya</div>
-                    <p id="dyn-summary" style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;"></p>
+                    <div class="section-title" id="t-sec-docs">Verifikasi & Berkas Resmi</div>
+                    <div class="doc-list" id="dyn-docs"></div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Verifikasi & Berkas Resmi</div>
-                    <div class="doc-list">
-                        <div class="doc-item">
-                            <div class="doc-info">
-                                <span class="doc-icon">🪪</span>
-                                <div>
-                                    <div class="doc-name">Sertifikat Gada Pratama</div>
-                                    <div class="doc-issuer">Mabes Polri / Polda Jatim</div>
-                                </div>
-                            </div>
-                            <a href="skl-gadapratama.pdf" class="btn-view-doc" target="_blank">Buka</a>
-                        </div>
-                        <div class="doc-item">
-                            <div class="doc-info">
-                                <span class="doc-icon">📜</span>
-                                <div>
-                                    <div class="doc-name">Ijazah Resmi SMK</div>
-                                    <div class="doc-issuer">SMKN 1 Trenggalek</div>
-                                </div>
-                            </div>
-                            <a href="ijazahbagas-smk.pdf" class="btn-view-doc" target="_blank">Buka</a>
-                        </div>
-                    </div>
-                </div>
-<!-- SECTION PENGALAMAN ORGANISASI & KOMUNITAS -->
-                <div class="section">
-                    <div class="section-title">Pengalaman Organisasi & Komunitas</div>
-                    <div class="doc-list">
-                        
-                        <!-- ISS -->
-                        <div class="doc-item">
-                            <div class="doc-info">
-                                <span class="doc-icon">🕌</span>
-                                <div>
-                                    <div class="doc-name">Wakil Ketua Divisi Remaja</div>
-                                    <div class="doc-issuer">Komunitas ISS (Infaq Sedekah Sosial)</div>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
-                                        Menginisiasi & mengelola program "Masjid Ramah" (fasilitas es krim, kopi gratis, & snack) untuk menarik minat pemuda serta anak-anak meramaikan masjid, di samping kegiatan sosial-keagamaan dan santunan.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Komunitas Bermain -->
-                        <div class="doc-item">
-                            <div class="doc-info">
-                                <span class="doc-icon">👥</span>
-                                <div>
-                                    <div class="doc-name">Community Facilitator & Peer Supporter</div>
-                                    <div class="doc-issuer">Komunitas Bermain (Surabaya & Malang Raya)</div>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
-                                        Aktif membimbing & membaurkan anggota baru agar adaptif, serta memperluas relasi lintas regional Surabaya-Malang.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <div class="section-title" id="t-sec-org">Pengalaman Organisasi & Komunitas</div>
+                    <div class="doc-list" id="dyn-org"></div>
                 </div>
 
-                <!-- SECTION PRESTASI & OLAHRAGA -->
                 <div class="section">
-                    <div class="section-title">Prestasi & Cabang Olahraga</div>
-                    <div class="doc-list">
-                        
-                        <div class="doc-item">
-                            <div class="doc-info">
-                                <span class="doc-icon">🏆</span>
-                                <div>
-                                    <div class="doc-name">Juara 3 Kumite - Piala Bupati Nganjuk 2023</div>
-                                    <div class="doc-issuer">Cabang Olahraga Karate (Sabuk Cokelat / Kyu 3)</div>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
-                                        Melatih kedisiplinan mental, fokus tinggi, ketahanan fisik, serta kepemimpinan dalam lingkungan yang kompetitif.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <div class="section-title" id="t-sec-achieve">Prestasi & Olahraga</div>
+                    <div class="doc-list" id="dyn-achieve"></div>
                 </div>
+
                 <div class="section">
-                    <div class="section-title">Riwayat Pendidikan</div>
+                    <div class="section-title" id="t-sec-edu">Riwayat Pendidikan</div>
                     <div id="dyn-education" style="font-size: 0.95rem;"></div>
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Kompetensi Teknis</div>
-                    <div class="skill-box">
-                        <h3>Hard Skills</h3>
+                    <div class="section-title" id="t-sec-skills">Kompetensi Teknis</div>
+                    <div style="margin-bottom: 15px;">
+                        <h3 style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;" id="t-hardskills">Hard Skills</h3>
                         <div class="tags" id="dyn-hardskills"></div>
                     </div>
-                    <div class="skill-box">
-                        <h3>Soft Skills</h3>
+                    <div>
+                        <h3 style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;" id="t-softskills">Soft Skills</h3>
                         <div class="tags" id="dyn-softskills"></div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- MODAL OVERLAY (SISTEM MODUL ATS CV FORMAL) -->
+    <!-- MODAL ATS CV -->
     <div class="cv-overlay" id="cvOverlay">
         <div class="cv-document">
-            <button class="cv-close" onclick="closeCV()">Tutup [Esc]</button>
+            <button class="cv-close" onclick="closeCV()" id="cv-btn-close">Tutup [Esc]</button>
             <div class="cv-header">
-                <h1 id="cv-name">Loading...</h1>
-                <p id="cv-contact">Loading...</p>
+                <h1 id="cv-name">BAGAS ARYA PUTRA</h1>
+                <p id="cv-contact"></p>
             </div>
             <div class="cv-sec">
-                <h2>Objektif / Ringkasan Profesional</h2>
-                <p id="cv-summary">Loading...</p>
+                <h2 id="cv-t-summary">Objektif / Ringkasan Profesional</h2>
+                <p id="cv-summary"></p>
             </div>
             <div class="cv-sec">
-                <h2>Pengalaman Kerja</h2>
+                <h2 id="cv-t-exp">Pengalaman Kerja</h2>
                 <div id="cv-exp-list"></div>
             </div>
             <div class="cv-sec">
-                <h2>Proyek & Pengalaman Lapangan</h2>
+                <h2 id="cv-t-proj">Proyek & Pengalaman Lapangan</h2>
                 <div id="cv-proj-list"></div>
             </div>
             <div class="cv-sec">
-                <h2>Pendidikan & Pelatihan</h2>
+                <h2 id="cv-t-edu">Pendidikan & Pelatihan</h2>
                 <div id="cv-edu-list"></div>
             </div>
             <div class="cv-sec">
-                <h2>Keahlian Utama</h2>
+                <h2 id="cv-t-skills">Keahlian Utama</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.85rem;" id="cv-skills-combo"></div>
             </div>
         </div>
     </div>
 
-    <!-- DATA CONTROLLER & JAVASCRIPT ENGINE -->
+    <!-- BILINGUAL DATA & LOGIC ENGINE -->
     <script>
-        const DATA_PROFILE = {
-            nama: "BAGAS ARYA PUTRA",
-            tagline: "GENERALIST & LIFELONG LEARNER",
-            kontak: "Jl.Gubeng Jaya Langgar No.7A, Gubeng, Surabaya | ba6422977@gmail.com | 082171123965",
-            ringkasan: "Saya adalah seorang Generalist yang memiliki pemahaman dasar di berbagai bidang, mulai dari operasional F&B, kelistrikan, hingga keamanan. Keunggulan saya terletak pada kemampuan beradaptasi dan pemecahan masalah lintas disiplin; misalnya, saya dapat turun tangan menangani kendala kelistrikan ringan atau merespons darurat keamanan saat bertugas di area kerja lain. Di luar jam kerja, saya adalah pembelajar mandiri yang gemar menghabiskan waktu di perpustakaan, saat ini sedang mempelajari Coding/Pemrograman dasar, dan aktif menempuh pendidikan S1 Ilmu Komunikasi di Universitas Terbuka."
+        // --- 1. THEME CONTROLLER ---
+        let isDark = true;
+        function toggleTheme() {
+            isDark = !isDark;
+            document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeToggle').innerText = isDark ? '🌙' : '☀️';
+        }
+
+        // --- 2. BILINGUAL DATABASE ---
+        let currentLang = 'id';
+
+        const dict = {
+            id: {
+                static: {
+                    status: "Siap Bekerja", btnCV: "📄 Lihat & Cetak CV ATS", btnEmail: "📧 Email Utama",
+                    waLink: "https://api.whatsapp.com/send?phone=6282171123965&text=Halo%20Bagas,%20saya%20tertarik%20dengan%20portofolio%20Anda.",
+                    btnWA: "💬 WhatsApp Hubungi", secGen: "Keahlian Lintas Bidang (Generalist)",
+                    secProj: "Aplikasi Keahlian Lintas Disiplin", secExp: "Rekam Jejak Karier",
+                    secAbout: "Tentang Saya", secDocs: "Verifikasi & Berkas Resmi", secOrg: "Pengalaman Organisasi & Komunitas",
+                    secAchieve: "Prestasi & Olahraga", secEdu: "Riwayat Pendidikan", secSkills: "Kompetensi Teknis",
+                    hHard: "Hard Skills", hSoft: "Soft Skills", cvClose: "Tutup [Esc]",
+                    cvTSum: "Objektif / Ringkasan Profesional", cvTExp: "Pengalaman Kerja", cvTProj: "Proyek & Pengalaman Lapangan",
+                    cvTEdu: "Pendidikan & Pelatihan", cvTSkill: "Keahlian Utama", btnBuka: "Buka"
+                },
+                profile: {
+                    tagline: "GENERALIST & PEMBELAJAR SEUMUR HIDUP",
+                    kontak: "Jl.Gubeng Jaya Langgar No.7A, Gubeng, Surabaya | ba6422977@gmail.com | 082171123965",
+                    ringkasan: "Saya adalah seorang Generalist yang memiliki pemahaman dasar di berbagai bidang, mulai dari operasional F&B, kelistrikan, hingga keamanan. Keunggulan saya terletak pada kemampuan beradaptasi dan pemecahan masalah lintas disiplin; misalnya, saya dapat turun tangan menangani kendala kelistrikan ringan atau merespons darurat keamanan saat bertugas di area kerja lain. Di luar jam kerja, saya adalah pembelajar mandiri yang gemar menghabiskan waktu di perpustakaan, saat ini sedang mempelajari Coding/Pemrograman dasar, dan aktif menempuh pendidikan S1 Ilmu Komunikasi di Universitas Terbuka."
+                },
+                generalist: [
+                    { icon: "🍳", title: "F&B & Operasional", desc: "Memahami dasar operasional dapur dan standar kebersihan (F&B). Mampu beradaptasi cepat dengan alur kerja di lapangan." },
+                    { icon: "⚡", title: "Dasar Kelistrikan", desc: "Punya basic kelistrikan. Sangat membantu untuk cek awal dan perbaikan ringan jika ada kendala instalasi saat sedang bekerja." },
+                    { icon: "🛡️", title: "SOP Keamanan", desc: "Mengetahui prosedur keamanan dasar, mitigasi pencegahan kejahatan, dan tanggap darurat seperti penanganan awal kebakaran." }
+                ],
+                projects: [
+                    { status: "Generalist", tag: "Problem Solving", judul: "Pemecahan Masalah Terintegrasi", desc: "Memanfaatkan keahlian dasar lintas bidang. Mampu melakukan perbaikan listrik ringan atau mitigasi risiko darurat saat bertugas di operasional F&B maupun sektor lainnya.", img: "projek-masak.jpg", tools: ["Basic Electrical", "Security SOP", "Adaptability"] },
+                    { status: "Ongoing", tag: "Self-Development", judul: "Pembelajaran Mandiri & Coding", desc: "Memanfaatkan waktu luang di perpustakaan untuk mempelajari pemrograman dasar. Web portofolio ini adalah bukti nyata dari hasil belajar coding mandiri.", img: "projek-listrik.jpg", tools: ["Library Research", "Basic Coding", "Self-Taught"] }
+                ],
+                experience: [
+                    { waktu: "Mei 2025 - Januari 2026", posisi: "Kitchen Crew - Karyawan Tetap", tempat: "Pendopo Garden Cafe & Eatery - Trenggalek", detail: "• Bertanggung jawab atas kebersihan area kitchen dan produksi dasar masakan serta mahir dalam mengoperasikan Wok untuk efisiensi di lingkungan fast-paced.\n• Mampu mengidentifikasi dan menangani masalah operasional dasar lintas bidang secara proaktif." },
+                    { waktu: "Januari 2025 - April 2025", posisi: "Teknisi Listrik (Karyawan Kontrak)", tempat: "PT Pulau Sambu Guntung - Riau", detail: "• Membantu pengawasan dan perbaikan dasar pada komponen mesin kelistrikan.\n• Ikut serta dalam pemeliharaan dan inspeksi berkala di lingkungan industri." },
+                    { waktu: "Sept 2024 - Nov 2024", posisi: "Tenaga Produksi Aluminium (Daily Worker)", tempat: "Surya Abadi Glass - Trenggalek", detail: "• Membantu pemotongan, perakitan, dan persiapan pengiriman properti berbasis aluminium dan kaca." },
+                    { waktu: "Juli 2024 - Sept 2024", posisi: "Karyawan Toko ATK (Daily Worker)", tempat: "BUMDES Sugiharto - Trenggalek", detail: "• Melayani pelanggan toko alat tulis, mengoperasikan mesin fotokopi, dan membantu pengetikan." },
+                    { waktu: "Juli 2023 - Okt 2023", posisi: "Helper Teknisi & Office Boy (PKL)", tempat: "PT PLN ULP Trenggalek", detail: "• Membantu tugas teknisi kelistrikan di lapangan sekaligus menjaga kebersihan operasional kantor." }
+                ],
+                docs: [
+                    { icon: "🪪", name: "Sertifikat Gada Pratama", issuer: "Mabes Polri / Polda Jatim", link: "skl-gadapratama.pdf" },
+                    { icon: "📜", name: "Ijazah Resmi SMK", issuer: "SMKN 1 Trenggalek", link: "ijazahbagas-smk.pdf" }
+                ],
+                orgs: [
+                    { icon: "🕌", name: "Wakil Ketua Divisi Remaja", issuer: "Komunitas ISS (Infaq Sedekah Sosial)", desc: "Menginisiasi program 'Masjid Ramah' (fasilitas es krim, kopi gratis) untuk menarik minat pemuda & anak-anak meramaikan masjid, di samping kegiatan sosial dan santunan." },
+                    { icon: "👥", name: "Community Facilitator & Peer Supporter", issuer: "Komunitas Bermain (Surabaya & Malang)", desc: "Aktif membimbing anggota baru agar adaptif, serta memperluas relasi lintas regional Surabaya-Malang." }
+                ],
+                achievements: [
+                    { icon: "🏆", name: "Juara 3 Kumite - Piala Bupati Nganjuk 2023", issuer: "Cabang Olahraga Karate (Sabuk Cokelat / Kyu 3)", desc: "Melatih kedisiplinan mental, fokus tinggi, ketahanan fisik, serta kepemimpinan dalam lingkungan yang kompetitif." }
+                ],
+                education: [
+                    { kapan: "Saat ini", di: "Universitas Terbuka (Formal)", spesialisasi: "S1 Ilmu Komunikasi (Sedang Menempuh Pendidikan)" },
+                    { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Jurusan Teknik Instalasi Tenaga Listrik | Nilai rata-rata 86,41" },
+                    { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Non Formal)", spesialisasi: "Pendidikan Satpam Gada Pratama" }
+                ],
+                skills: {
+                    hard: ["Basic F&B", "Dasar Kelistrikan", "SOP Keamanan / Security", "Dasar Coding", "Bahasa Inggris Dasar", "OSINT"],
+                    soft: ["Generalist (Serba Bisa)", "Problem Solving", "Pembelajar Mandiri", "Tenang di Bawah Tekanan", "Bertanggung Jawab"]
+                }
+            },
+            en: {
+                static: {
+                    status: "Ready to Hire", btnCV: "📄 View & Print ATS CV", btnEmail: "📧 Primary Email",
+                    waLink: "https://api.whatsapp.com/send?phone=6282171123965&text=Hello%20Bagas,%20I%20am%20interested%20in%20your%20portfolio.",
+                    btnWA: "💬 Contact via WhatsApp", secGen: "Cross-Disciplinary Skills (Generalist)",
+                    secProj: "Applied Cross-Discipline Skills", secExp: "Career Track Record",
+                    secAbout: "About Me", secDocs: "Verifications & Documents", secOrg: "Organization & Community Experience",
+                    secAchieve: "Achievements & Sports", secEdu: "Educational Background", secSkills: "Core Competencies",
+                    hHard: "Hard Skills", hSoft: "Soft Skills", cvClose: "Close [Esc]",
+                    cvTSum: "Professional Objective / Summary", cvTExp: "Work Experience", cvTProj: "Projects & Field Experience",
+                    cvTEdu: "Education & Training", cvTSkill: "Core Expertise", btnBuka: "View"
+                },
+                profile: {
+                    tagline: "GENERALIST & LIFELONG LEARNER",
+                    kontak: "Gubeng Jaya Langgar St. 7A, Surabaya | ba6422977@gmail.com | +62 821-7112-3965",
+                    ringkasan: "I am a Generalist with foundational understanding across various fields, from F&B operations and electrical basics to security protocols. My strength lies in adaptability and cross-disciplinary problem solving; for instance, I can step in to handle minor electrical issues or respond to security emergencies while assigned to other duties. Outside of work, I am an independent learner who frequently spends time in the library, currently studying basic Coding/Programming, and actively pursuing a Bachelor's degree in Communication Studies at Universitas Terbuka."
+                },
+                generalist: [
+                    { icon: "🍳", title: "F&B & Operations", desc: "Understanding kitchen operations and hygiene standards. Able to adapt quickly to fast-paced workflows." },
+                    { icon: "⚡", title: "Electrical Basics", desc: "Possess basic electrical knowledge. Highly useful for initial checks and minor repairs of installation issues during work." },
+                    { icon: "🛡️", title: "Security SOPs", desc: "Knowledgeable in basic security procedures, crime prevention mitigation, and emergency response such as initial fire handling." }
+                ],
+                projects: [
+                    { status: "Generalist", tag: "Problem Solving", judul: "Integrated Problem Solving", desc: "Utilizing cross-disciplinary skills to perform minor electrical repairs or mitigate emergency risks while on duty in F&B or other sectors.", img: "projek-masak.jpg", tools: ["Basic Electrical", "Security SOP", "Adaptability"] },
+                    { status: "Ongoing", tag: "Self-Development", judul: "Self-Taught Coding", desc: "Productively utilizing free time at the library to learn programming logic. This web portfolio is a direct result of my independent coding studies.", img: "projek-listrik.jpg", tools: ["Library Research", "Basic Coding", "Self-Taught"] }
+                ],
+                experience: [
+                    { waktu: "May 2025 - Jan 2026", posisi: "Kitchen Crew - Full Time", tempat: "Pendopo Garden Cafe & Eatery - Trenggalek", detail: "• Responsible for kitchen cleanliness and basic food production, proficient in operating the Wok for efficiency in a fast-paced environment.\n• Proactively identified and resolved basic cross-departmental operational issues." },
+                    { waktu: "Jan 2025 - Apr 2025", posisi: "Electrical Technician (Contract)", tempat: "PT Pulau Sambu Guntung - Riau", detail: "• Assisted in the supervision and basic repair of electrical machine components.\n• Participated in periodic maintenance and inspection within an industrial environment." },
+                    { waktu: "Sep 2024 - Nov 2024", posisi: "Aluminum & Glass Production (Daily Worker)", tempat: "Surya Abadi Glass - Trenggalek", detail: "• Assisted in cutting, assembling, and preparing aluminum and glass properties for delivery." },
+                    { waktu: "Jul 2024 - Sep 2024", posisi: "Stationery Store Staff (Daily Worker)", tempat: "BUMDES Sugiharto - Trenggalek", detail: "• Served stationery customers, operated photocopy machines, and assisted with typing tasks." },
+                    { waktu: "Jul 2023 - Oct 2023", posisi: "Technician Helper & Office Boy (Intern)", tempat: "PT PLN ULP Trenggalek", detail: "• Assisted electrical technicians in the field while maintaining the cleanliness of office operations." }
+                ],
+                docs: [
+                    { icon: "🪪", name: "Gada Pratama Security Certificate", issuer: "National Police / East Java Regional Police", link: "skl-gadapratama.pdf" },
+                    { icon: "📜", name: "Official Vocational Diploma", issuer: "SMKN 1 Trenggalek", link: "ijazahbagas-smk.pdf" }
+                ],
+                orgs: [
+                    { icon: "🕌", name: "Vice Chairman of Youth Division", issuer: "ISS Community (Social & Charity)", desc: "Initiated the 'Friendly Mosque' program (free ice cream & coffee) to attract youth and children to the mosque, alongside regular charity activities." },
+                    { icon: "👥", name: "Community Facilitator & Peer Supporter", issuer: "Komunitas Bermain (Surabaya & Malang)", desc: "Actively guided new members to adapt and expanded cross-regional relations between Surabaya and Malang." }
+                ],
+                achievements: [
+                    { icon: "🏆", name: "3rd Place Kumite - Regent Cup 2023", issuer: "Karate (Brown Belt / Kyu 3)", desc: "Trained mental discipline, high focus, physical endurance, and leadership in a highly competitive environment." }
+                ],
+                education: [
+                    { kapan: "Present", di: "Universitas Terbuka (Formal)", spesialisasi: "Bachelor of Communication Studies (Currently Enrolled)" },
+                    { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Electrical Installation Engineering | Average Score: 86.41" },
+                    { kapan: "2026", di: "PT Empat Bintang Luhur Berjaya (Non-Formal)", spesialisasi: "Gada Pratama Security Training" }
+                ],
+                skills: {
+                    hard: ["Basic F&B", "Electrical Basics", "Security SOP", "Basic Coding", "Basic English", "OSINT"],
+                    soft: ["Generalist", "Problem Solving", "Independent Learner", "Calm under Pressure", "Responsible"]
+                }
+            }
         };
 
-        const DATA_PENGALAMAN = [
-            {
-                waktu: "Mei 2025 - Januari 2026",
-                posisi: "Kitchen Crew - Karyawan Tetap",
-                tempat: "Pendopo Garden Cafe & Eatery - Trenggalek",
-                detail: "• Bertanggung jawab atas kebersihan area kitchen dan produksi dasar masakan serta mahir dalam mengoperasikan Wok.\n• Mampu mengidentifikasi dan menangani masalah operasional dasar lintas bidang di area kerja secara proaktif."
-            },
-            {
-                waktu: "Januari 2025 - April 2025",
-                posisi: "Teknisi Listrik (Karyawan Kontrak)",
-                tempat: "PT Pulau Sambu Guntung - Riau",
-                detail: "• Membantu pengawasan dan perbaikan dasar pada komponen mesin kelistrikan.\n• Ikut serta dalam pemeliharaan dan inspeksi berkala di lingkungan industri."
-            },
-            {
-                waktu: "September 2024 - November 2024",
-                posisi: "Tenaga Produksi Aluminium & Kaca (Daily Worker)",
-                tempat: "Surya Abadi Glass - Trenggalek",
-                detail: "• Membantu pemotongan, perakitan, dan persiapan pengiriman properti berbasis aluminium dan kaca."
-            },
-            {
-                waktu: "Juli 2024 - September 2024",
-                posisi: "Karyawan Toko ATK & Fotocopy (Daily Worker)",
-                tempat: "BUMDES Sugiharto - Trenggalek",
-                detail: "• Melayani pelanggan toko alat tulis, mengoperasikan mesin fotokopi, dan membantu pengetikan."
-            },
-            {
-                waktu: "Juli 2023 - Oktober 2023",
-                posisi: "Helper Teknisi & Office Boy (Praktik Kerja Lapangan)",
-                tempat: "PT PLN ULP Trenggalek",
-                detail: "• Membantu tugas teknisi kelistrikan di lapangan sekaligus menjaga kebersihan operasional kantor."
-            }
-        ];
+        function toggleLang() {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            document.getElementById('langToggle').innerText = currentLang === 'id' ? 'EN' : 'ID';
+            renderContent();
+        }
 
-        const DATA_PROYEK = [
-            {
-                tag: "Problem Solving",
-                judul: "Pemecahan Masalah Terintegrasi",
-                desc: "Memanfaatkan keahlian dasar lintas bidang. Mampu melakukan perbaikan listrik ringan atau mitigasi risiko darurat (seperti antisipasi kebakaran) saat bertugas di operasional F&B maupun sektor lainnya.",
-                status: "Generalist",
-                tools: ["Basic Electrical", "Security SOP", "Adaptability"],
-                img: "projek-masak.jpg"
-            },
-            {
-                tag: "Self-Development",
-                judul: "Pembelajaran Mandiri & Coding",
-                desc: "Memanfaatkan waktu luang secara produktif di perpustakaan untuk mempelajari hal-hal baru, termasuk pemahaman dasar logika pemrograman (coding) guna memperluas wawasan digital. Web portofolio yang Anda lihat saat ini adalah bukti nyata dari hasil saya belajar coding secara mandiri.",
-                status: "Ongoing",
-                tools: ["Library Research", "Basic Coding", "Self-Taught"],
-                img: "projek-listrik.jpg" 
-            }
-        ];
+        // --- 3. RENDERING ENGINE ---
+        function renderContent() {
+            const data = dict[currentLang];
+            
+            // Static Texts
+            document.getElementById('t-status').innerText = data.static.status;
+            document.getElementById('t-btnCV').innerText = data.static.btnCV;
+            document.getElementById('t-btnEmail').innerText = data.static.btnEmail;
+            document.getElementById('wa-link').innerText = data.static.btnWA;
+            document.getElementById('wa-link').href = data.static.waLink;
+            
+            document.getElementById('t-sec-generalist').innerHTML = data.static.secGen;
+            document.getElementById('t-sec-projects').innerHTML = data.static.secProj;
+            document.getElementById('t-sec-exp').innerHTML = data.static.secExp;
+            document.getElementById('t-sec-about').innerHTML = data.static.secAbout;
+            document.getElementById('t-sec-docs').innerHTML = data.static.secDocs;
+            document.getElementById('t-sec-org').innerHTML = data.static.secOrg;
+            document.getElementById('t-sec-achieve').innerHTML = data.static.secAchieve;
+            document.getElementById('t-sec-edu').innerHTML = data.static.secEdu;
+            document.getElementById('t-sec-skills').innerHTML = data.static.secSkills;
+            document.getElementById('t-hardskills').innerText = data.static.hHard;
+            document.getElementById('t-softskills').innerText = data.static.hSoft;
+            
+            // Profile
+            document.getElementById('t-tagline').innerText = data.profile.tagline;
+            document.getElementById('t-summary').innerText = data.profile.ringkasan;
+            
+            // Generalist Grid
+            document.getElementById('dyn-generalist').innerHTML = data.generalist.map(g => `
+                <div class="service-card"><span class="icon">${g.icon}</span><h4>${g.title}</h4><p>${g.desc}</p></div>
+            `).join('');
 
-        const DATA_PENDIDIKAN = [
-            { kapan: "Saat ini", di: "Universitas Terbuka (Formal)", spesialisasi: "S1 Ilmu Komunikasi (Sedang Menempuh Pendidikan)" },
-            { kapan: "2021 - 2024", di: "SMK Negeri 1 Trenggalek (Formal)", spesialisasi: "Jurusan Teknik Instalasi Tenaga Listrik | Nilai rata-rata 86,41" },
-            { kapan: "Tahun 2026", di: "PT Empat Bintang Luhur Berjaya (Non Formal)", spesialisasi: "Pendidikan Satpam Gada Pratama" }
-        ];
-
-        const HARD_SKILLS = ["Basic F&B", "Dasar Kelistrikan", "SOP Keamanan / Security", "Dasar Coding / Pemrograman", "Bahasa Inggris Dasar", "OSINT"];
-        const SOFT_SKILLS = ["Generalist (Serba Bisa)", "Problem Solving Lintas Bidang", "Pembelajar Mandiri", "Tetap Tenang di Bawah Tekanan", "Bertanggung Jawab"];
-
-        document.getElementById('dyn-name').innerText = DATA_PROFILE.nama;
-        document.getElementById('dyn-tagline').innerText = DATA_PROFILE.tagline;
-        document.getElementById('dyn-summary').innerText = DATA_PROFILE.ringkasan;
-
-        let htmlExp = '';
-        DATA_PENGALAMAN.forEach(e => {
-            htmlExp += `<div class="timeline-item"><span class="time-badge">${e.waktu}</span><h3>${e.posisi}</h3><h4>${e.tempat}</h4><p>${e.detail}</p></div>`;
-        });
-        document.getElementById('dyn-experience').innerHTML = htmlExp;
-
-        let htmlProj = '';
-        DATA_PROYEK.forEach(p => {
-            let toolsSpan = p.tools.map(t => `<span>${t}</span>`).join('');
-            htmlProj += `
+            // Projects
+            document.getElementById('dyn-projects').innerHTML = data.projects.map(p => `
                 <div class="project-card">
-                    <div class="project-img-box">
-                        <span class="p-status">${p.status}</span>
-                        <img src="${p.img}" alt="${p.judul}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';">
-                    </div>
-                    <div class="project-info">
-                        <span class="tag">${p.tag}</span>
-                        <h3>${p.judul}</h3>
-                        <p>${p.desc}</p>
-                        <div class="project-tools">${toolsSpan}</div>
-                    </div>
-                </div>`;
-        });
-        document.getElementById('dyn-projects').innerHTML = htmlProj;
+                    <div class="project-img-box"><span class="p-status">${p.status}</span><img src="${p.img}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';"></div>
+                    <div class="project-info"><span class="tag">${p.tag}</span><h3>${p.judul}</h3><p>${p.desc}</p><div class="project-tools">${p.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>
+                </div>
+            `).join('');
 
-        let htmlEdu = '';
-        DATA_PENDIDIKAN.forEach(ed => {
-            htmlEdu += `<div style="margin-bottom:18px;"><strong style="color:var(--cyan);">${ed.kapan}</strong><p style="font-weight:600;margin-top:2px;">${ed.di}</p><p style="color:var(--text-muted);font-size:0.85rem;">${ed.spesialisasi}</p></div>`;
-        });
-        document.getElementById('dyn-education').innerHTML = htmlEdu;
+            // Experience
+            document.getElementById('dyn-experience').innerHTML = data.experience.map(e => `
+                <div class="timeline-item"><span class="time-badge">${e.waktu}</span><h3>${e.posisi}</h3><h4>${e.tempat}</h4><p>${e.detail}</p></div>
+            `).join('');
 
-        document.getElementById('dyn-hardskills').innerHTML = HARD_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
-        document.getElementById('dyn-softskills').innerHTML = SOFT_SKILLS.map(s => `<span class="tag-item">${s}</span>`).join('');
+            // Docs
+            document.getElementById('dyn-docs').innerHTML = data.docs.map(d => `
+                <div class="doc-item"><div class="doc-info"><span class="doc-icon">${d.icon}</span><div><div class="doc-name">${d.name}</div><div class="doc-issuer">${d.issuer}</div></div></div><a href="${d.link}" class="btn-view-doc" target="_blank">${data.static.btnBuka}</a></div>
+            `).join('');
 
-        document.getElementById('cv-name').innerText = DATA_PROFILE.nama;
-        document.getElementById('cv-contact').innerText = DATA_PROFILE.kontak;
-        document.getElementById('cv-summary').innerText = DATA_PROFILE.ringkasan;
+            // Orgs & Achieve
+            document.getElementById('dyn-org').innerHTML = data.orgs.map(o => `
+                <div class="doc-item" style="align-items:flex-start;"><div class="doc-info"><span class="doc-icon">${o.icon}</span><div><div class="doc-name">${o.name}</div><div class="doc-issuer">${o.issuer}</div><p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">${o.desc}</p></div></div></div>
+            `).join('');
+            document.getElementById('dyn-achieve').innerHTML = data.achievements.map(a => `
+                <div class="doc-item" style="align-items:flex-start;"><div class="doc-info"><span class="doc-icon">${a.icon}</span><div><div class="doc-name">${a.name}</div><div class="doc-issuer">${a.issuer}</div><p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">${a.desc}</p></div></div></div>
+            `).join('');
 
-        let cvExpHtml = '';
-        DATA_PENGALAMAN.forEach(e => { cvExpHtml += `<div style="margin-bottom:12px;"><div class="cv-line"><span>${e.posisi}</span><span>${e.waktu}</span></div><div class="cv-subline"><span>${e.tempat}</span></div><p>${e.detail}</p></div>`; });
-        document.getElementById('cv-exp-list').innerHTML = cvExpHtml;
+            // Education & Skills
+            document.getElementById('dyn-education').innerHTML = data.education.map(ed => `
+                <div style="margin-bottom:18px;"><strong style="color:var(--accent);">${ed.kapan}</strong><p style="font-weight:600;margin-top:2px;">${ed.di}</p><p style="color:var(--text-muted);font-size:0.85rem;">${ed.spesialisasi}</p></div>
+            `).join('');
+            document.getElementById('dyn-hardskills').innerHTML = data.skills.hard.map(s => `<span class="tag-item">${s}</span>`).join('');
+            document.getElementById('dyn-softskills').innerHTML = data.skills.soft.map(s => `<span class="tag-item">${s}</span>`).join('');
 
-        let cvProjHtml = '';
-        DATA_PROYEK.forEach(p => { cvProjHtml += `<div style="margin-bottom:10px;"><div class="cv-line"><span>${p.judul}</span><span>${p.tag}</span></div><p>• ${p.desc}</p></div>`; });
-        document.getElementById('cv-proj-list').innerHTML = cvProjHtml;
+            // --- CV ATS MODAL UPDATE ---
+            document.getElementById('cv-btn-close').innerText = data.static.cvClose;
+            document.getElementById('cv-t-summary').innerText = data.static.cvTSum;
+            document.getElementById('cv-t-exp').innerText = data.static.cvTExp;
+            document.getElementById('cv-t-proj').innerText = data.static.cvTProj;
+            document.getElementById('cv-t-edu').innerText = data.static.cvTEdu;
+            document.getElementById('cv-t-skills').innerText = data.static.cvTSkill;
+            
+            document.getElementById('cv-contact').innerText = data.profile.kontak;
+            document.getElementById('cv-summary').innerText = data.profile.ringkasan;
+            document.getElementById('cv-exp-list').innerHTML = data.experience.map(e => `<div style="margin-bottom:12px;"><div class="cv-line"><span>${e.posisi}</span><span>${e.waktu}</span></div><div class="cv-subline"><span>${e.tempat}</span></div><p>${e.detail}</p></div>`).join('');
+            document.getElementById('cv-proj-list').innerHTML = data.projects.map(p => `<div style="margin-bottom:10px;"><div class="cv-line"><span>${p.judul}</span><span>${p.tag}</span></div><p>• ${p.desc}</p></div>`).join('');
+            document.getElementById('cv-edu-list').innerHTML = data.education.map(ed => `<div style="margin-bottom:10px;"><div class="cv-line"><span>${ed.di}</span><span>${ed.kapan}</span></div><div class="cv-subline"><span>${ed.spesialisasi}</span></div></div>`).join('');
+            document.getElementById('cv-skills-combo').innerHTML = `
+                <div><b>${data.static.hHard}:</b><br>${data.skills.hard.map(s=>`• ${s}`).join('<br>')}</div>
+                <div><b>${data.static.hSoft}:</b><br>${data.skills.soft.map(s=>`• ${s}`).join('<br>')}</div>`;
+        }
 
-        let cvEduHtml = '';
-        DATA_PENDIDIKAN.forEach(ed => { cvEduHtml += `<div style="margin-bottom:10px;"><div class="cv-line"><span>${ed.di}</span><span>${ed.kapan}</span></div><div class="cv-subline"><span>${ed.spesialisasi}</span></div></div>`; });
-        document.getElementById('cv-edu-list').innerHTML = cvEduHtml;
+        // Initialize First Render
+        renderContent();
 
-        document.getElementById('cv-skills-combo').innerHTML = `
-            <div><b>Hard Skills Kompetensi:</b><br>${HARD_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>
-            <div><b>Soft Skills & Karakter:</b><br>${SOFT_SKILLS.map(s=>`• ${s}`).join('<br>')}</div>`;
-
-        function openCV() { document.getElementById('cvOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeCV() { document.getElementById('cvOverlay').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        // Modal Logic
+        function openCV() { 
+            const overlay = document.getElementById('cvOverlay');
+            overlay.style.display = 'flex'; 
+            setTimeout(() => overlay.classList.add('show'), 10);
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeCV() { 
+            const overlay = document.getElementById('cvOverlay');
+            overlay.classList.remove('show');
+            setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+        }
         window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
     </script>
-<script src="data.js"></script>
 </body>
 </html>
