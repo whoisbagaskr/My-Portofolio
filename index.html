@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Link Preview Meta Tags -->
+    <!-- =======================================================================
+         1. SEO & OPEN GRAPH META TAGS (PREVIEW WA / LINKEDIN MEWAH)
+         ======================================================================= -->
     <title>Bagas Arya Putra | Professional Showcase</title>
-    <meta name="description" content="Portfolio of Bagas Arya Putra - A Generalist & Lifelong Learner">
+    <meta name="description" content="Portfolio of Bagas Arya Putra - A Generalist, Problem Solver, and Lifelong Learner.">
+    <meta name="author" content="Bagas Arya Putra">
+    <meta name="keywords" content="Bagas Arya Putra, Portfolio, Generalist, F&B, Technician, Security">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whoisbagaskr.github.io/My-Portofolio/">
     <meta property="og:title" content="Bagas Arya Putra | Professional Portfolio">
     <meta property="og:description" content="Generalist, Problem Solver, and Lifelong Learner. View my complete track record and ATS CV here.">
     <meta property="og:image" content="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg">
+    <meta property="og:image:alt" content="Foto Profil Bagas Arya Putra">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bagas Arya Putra | Portfolio">
+    <meta name="twitter:description" content="A Generalist and Lifelong Learner. View my track record.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg">
+    
     <meta name="theme-color" content="#0ea5e9">
 
     <!-- Google Fonts: Inter -->
@@ -19,32 +35,44 @@
     
     <style>
         /* ==========================================================================
-           1. CORE DESIGN TOKENS (DARK & LIGHT MODE)
+           2. CSS VARIABLES (DESIGN TOKENS & WCAG CONTRAST)
            ========================================================================== */
         :root {
-            /* DARK MODE (Default) */
-            --bg-base: #06060f;
-            --bg-card: #0b0b1e;
-            --bg-card-hover: #12122b;
-            --border-color: #1b1b3a;
+            /* Color Tokens - Dark Mode (Default) */
+            --bg-base: #020617;
+            --bg-card: #0f172a;
+            --bg-card-hover: #1e293b;
+            --border-color: #334155;
             --border-hover: #0ea5e9;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent: #00f5d4;
-            --accent-hover: #00d1b5;
-            --secondary: #3a86ff;
-            --success: #8ac926;
-            --glass-bg: rgba(11, 11, 30, 0.7);
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+            --secondary: #6366f1;
+            --success: #22c55e;
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            
+            /* Spacing Tokens */
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 20px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+
+            /* Typography & Layout Tokens */
+            --font-main: 'Inter', system-ui, sans-serif;
+            --radius-md: 12px;
+            --radius-lg: 16px;
             --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-            --glow-neon: 0 0 25px rgba(0, 245, 212, 0.25);
+            --glow-neon: 0 0 30px rgba(14, 165, 233, 0.2);
         }
 
         [data-theme="light"] {
-            /* LIGHT MODE */
-            --bg-base: #f1f5f9;
+            /* Color Tokens - Light Mode (High Contrast WCAG) */
+            --bg-base: #f8fafc;
             --bg-card: #ffffff;
-            --bg-card-hover: #f8fafc;
-            --border-color: #e2e8f0;
+            --bg-card-hover: #f1f5f9;
+            --border-color: #cbd5e1;
             --border-hover: #0284c7;
             --text-main: #0f172a;
             --text-muted: #475569;
@@ -52,8 +80,8 @@
             --accent-hover: #0369a1;
             --secondary: #4338ca;
             --success: #16a34a;
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --shadow-subtle: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-subtle: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
             --glow-neon: 0 10px 25px rgba(2, 132, 199, 0.15);
         }
 
@@ -62,40 +90,37 @@
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: var(--font-main);
             line-height: 1.6;
-            padding: 50px 20px;
+            padding: var(--space-xl) var(--space-md);
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         .container { max-width: 1100px; margin: 0 auto; position: relative; }
 
-        /* ==========================================================================
-           2. FLOATING CONTROLS (THEME & LANG)
-           ========================================================================== */
+        /* Floating Controls */
         .controls-panel {
             position: fixed; top: 20px; right: 20px;
-            display: flex; gap: 10px; z-index: 100;
-            background: var(--glass-bg); backdrop-filter: blur(10px);
-            padding: 8px 12px; border-radius: 30px;
+            display: flex; gap: var(--space-xs); z-index: 100;
+            background: var(--glass-bg); backdrop-filter: blur(12px);
+            padding: var(--space-xs) var(--space-sm); border-radius: 30px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-subtle);
         }
         .ctrl-btn {
             background: transparent; border: none;
             color: var(--text-main); font-size: 1.1rem;
-            cursor: pointer; padding: 5px 10px;
-            border-radius: 20px; font-weight: 700; font-family: 'Inter';
+            cursor: pointer; padding: 4px 8px;
+            border-radius: 20px; font-weight: 700; font-family: var(--font-main);
             transition: 0.3s ease;
         }
-        .ctrl-btn:hover { background: var(--border-color); color: var(--accent); }
-        .ctrl-btn.active { color: var(--accent); }
+        .ctrl-btn:hover, .ctrl-btn:focus-visible { 
+            background: var(--border-color); color: var(--accent); outline: 2px solid var(--accent); 
+        }
 
-        /* ==========================================================================
-           3. HEADER & PROFILE
-           ========================================================================== */
+        /* Header */
         header { text-align: center; margin-bottom: 60px; animation: fadeIn 0.8s ease; }
-        .profile-wrapper { position: relative; width: 140px; height: 140px; margin: 0 auto 25px; }
+        .profile-wrapper { position: relative; width: 140px; height: 140px; margin: 0 auto var(--space-lg); }
         .profile-frame {
             width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
             border: 3px solid var(--accent); box-shadow: var(--glow-neon);
@@ -109,108 +134,102 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
         header h1 {
-            font-size: 3rem; font-weight: 800; letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px;
+            color: var(--text-main); margin-bottom: var(--space-xs);
         }
-        header p { color: var(--text-muted); font-size: 1.15rem; font-weight: 500; margin-bottom: 25px; }
+        header p { color: var(--text-muted); font-size: 1.15rem; font-weight: 500; margin-bottom: var(--space-lg); }
 
-        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .btn-group { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
         .btn {
-            padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            padding: 12px 24px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem;
             text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex; align-items: center; gap: 8px; border: 2px solid transparent;
         }
-        .btn-primary { background: var(--accent); color: #06060f; border: none; box-shadow: var(--shadow-subtle); }
+        .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+        .btn-primary { background: var(--accent); color: #ffffff; box-shadow: var(--shadow-subtle); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--glow-neon); }
-        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border-color: var(--border-color); }
         .btn-secondary:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-        /* ==========================================================================
-           4. MAIN GRID & CARDS
-           ========================================================================== */
-        .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; animation: slideUp 0.8s ease; }
+        /* Main Grid */
+        .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-lg); animation: slideUp 0.8s ease; }
         @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 
         .section {
             background: var(--bg-card); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 35px; margin-bottom: 30px;
+            border-radius: var(--radius-lg); padding: var(--space-lg); margin-bottom: var(--space-lg);
             box-shadow: var(--shadow-subtle); transition: border 0.3s ease;
         }
-        .section:hover { border-color: rgba(14, 165, 233, 0.3); }
+        .section:hover { border-color: rgba(14, 165, 233, 0.4); }
 
         .section-title {
             font-size: 1.25rem; font-weight: 700; color: var(--text-main);
-            margin-bottom: 25px; display: flex; align-items: center; gap: 12px;
+            margin-bottom: var(--space-lg); display: flex; align-items: center; gap: 12px;
             text-transform: uppercase; letter-spacing: 1px;
         }
-        .section-title::before { content: ''; display: block; width: 4px; height: 20px; background: var(--accent); border-radius: 4px; }
+        .section-title::before { content: ''; display: block; width: 5px; height: 22px; background: var(--accent); border-radius: 4px; }
 
         /* Generalist Grid */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); }
         .service-card {
             background: var(--bg-base); border: 1px solid var(--border-color);
-            padding: 20px; border-radius: 12px; transition: all 0.3s ease;
+            padding: var(--space-md); border-radius: var(--radius-md); transition: all 0.3s ease;
         }
         .service-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--glow-neon); }
-        .service-card .icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-        .service-card h4 { color: var(--text-main); margin-bottom: 6px; font-size: 1.05rem; }
-        .service-card p { color: var(--text-muted); font-size: 0.85rem; }
+        .service-card .icon { font-size: 2rem; margin-bottom: var(--space-sm); display: block; }
+        .service-card h4 { color: var(--text-main); margin-bottom: var(--space-xs); font-size: 1.1rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.9rem; }
 
         /* Project Cards */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
         .project-card {
             background: var(--bg-base); border: 1px solid var(--border-color);
-            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+            border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;
             transition: all 0.3s ease;
         }
         .project-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow-subtle); }
-        .project-img-box { width: 100%; height: 160px; overflow: hidden; position: relative; }
+        .project-img-box { width: 100%; height: 180px; overflow: hidden; position: relative; }
         .project-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .project-card:hover .project-img-box img { transform: scale(1.08); }
-        .p-status { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.8); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; color: #00f5d4; border: 1px solid #00f5d4; backdrop-filter: blur(4px); }
-        .project-info { padding: 20px; flex-grow: 1; }
-        .project-info .tag { color: var(--secondary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .project-info h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px; }
-        .project-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; }
+        .p-status { position: absolute; top: 12px; right: 12px; background: rgba(15, 23, 42, 0.85); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #38bdf8; border: 1px solid #38bdf8; backdrop-filter: blur(4px); }
+        .project-info { padding: var(--space-md); flex-grow: 1; }
+        .project-info .tag { color: var(--secondary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: var(--space-xs); display: block; }
+        .project-info h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: var(--space-xs); }
+        .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--space-md); }
         .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
-        .project-tools span { font-size: 0.7rem; background: var(--bg-card); color: var(--text-main); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border-color); font-weight: 500; }
+        .project-tools span { font-size: 0.75rem; background: var(--bg-card); color: var(--text-main); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border-color); font-weight: 500; }
 
         /* Timeline (Experience) */
-        .timeline { border-left: 2px solid var(--border-color); padding-left: 25px; margin-left: 10px; }
-        .timeline-item { position: relative; margin-bottom: 35px; }
-        .timeline-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: var(--secondary); outline: 4px solid var(--bg-card); }
-        .time-badge { display: inline-block; background: rgba(58, 134, 255, 0.1); color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(58, 134, 255, 0.2); }
-        .timeline-item h3 { color: var(--text-main); font-size: 1.15rem; font-weight: 700; }
-        .timeline-item h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 8px; font-weight: 500; }
-        .timeline-item p { color: var(--text-muted); font-size: 0.9rem; white-space: pre-line; }
+        .timeline { border-left: 2px solid var(--border-color); padding-left: var(--space-lg); margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: var(--space-xl); }
+        .timeline-item::before { content: ''; position: absolute; left: -40px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background-color: var(--secondary); outline: 4px solid var(--bg-card); }
+        .time-badge { display: inline-block; background: rgba(99, 102, 241, 0.1); color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: var(--space-sm); border: 1px solid rgba(99, 102, 241, 0.2); }
+        .timeline-item h3 { color: var(--text-main); font-size: 1.2rem; font-weight: 700; }
+        .timeline-item h4 { color: var(--accent); font-size: 1rem; margin-bottom: var(--space-xs); font-weight: 600; }
+        .timeline-item p { color: var(--text-muted); font-size: 0.95rem; white-space: pre-line; }
 
         /* Right Column Docs & Tags */
-        .doc-list { display: flex; flex-direction: column; gap: 12px; }
-        .doc-item { display: flex; align-items: center; justify-content: space-between; background: var(--bg-base); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); transition: 0.3s; }
-        .doc-item:hover { border-color: var(--accent); }
-        .doc-info { display: flex; align-items: flex-start; gap: 15px; }
-        .doc-icon { font-size: 1.5rem; line-height: 1; }
-        .doc-name { font-size: 0.95rem; color: var(--text-main); font-weight: 600; }
-        .doc-issuer { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
-        .btn-view-doc { font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 600; border: 1px solid var(--accent); padding: 6px 14px; border-radius: 6px; transition: 0.2s; }
-        .btn-view-doc:hover { background: var(--accent); color: var(--bg-base); }
+        .doc-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+        .doc-item { display: flex; align-items: center; justify-content: space-between; background: var(--bg-base); padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--border-color); transition: 0.3s; }
+        .doc-item:hover { border-color: var(--accent); transform: translateX(5px); }
+        .doc-info { display: flex; align-items: flex-start; gap: var(--space-sm); }
+        .doc-icon { font-size: 1.6rem; line-height: 1; }
+        .doc-name { font-size: 1rem; color: var(--text-main); font-weight: 600; }
+        .doc-issuer { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; }
+        .btn-view-doc { font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: 600; border: 1px solid var(--accent); padding: 6px 14px; border-radius: 6px; transition: 0.2s; }
+        .btn-view-doc:hover, .btn-view-doc:focus-visible { background: var(--accent); color: #ffffff; }
 
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag-item { background: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-main); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; transition: 0.2s; }
-        .tag-item:hover { border-color: var(--secondary); color: var(--secondary); }
+        .tag-item { background: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-main); padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: 0.2s; }
+        .tag-item:hover { border-color: var(--secondary); color: var(--secondary); background: rgba(99, 102, 241, 0.05); }
 
-        /* ==========================================================================
-           5. MODAL ATS SYSTEM INTERFACE & PRINT CSS
-           ========================================================================== */
+        /* ATS CV Modal */
         .cv-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 999; display: none; justify-content: center; align-items: flex-start; overflow-y: auto; padding: 40px 20px; opacity: 0; transition: opacity 0.3s ease; }
         .cv-overlay.show { opacity: 1; }
         .cv-document { background: #ffffff; color: #0f172a; width: 100%; max-width: 800px; padding: 50px; border-radius: 8px; position: relative; font-family: 'Arial', sans-serif; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
         .cv-close { position: absolute; top: 20px; right: 20px; background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .cv-close:hover { background: #dc2626; }
+        .cv-close:hover, .cv-close:focus-visible { background: #dc2626; outline: 3px solid #fca5a5; }
         .cv-header { border-bottom: 2px solid #334155; padding-bottom: 20px; margin-bottom: 25px; text-align: center; }
         .cv-header h1 { font-size: 2.2rem; color: #0f172a; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px; }
         .cv-header p { color: #475569; font-size: 0.95rem; font-weight: 600; }
@@ -227,107 +246,109 @@
             .cv-document { box-shadow: none; padding: 0; margin: 0; width: 100%; max-width: 100%; }
             .cv-close, .controls-panel { display: none !important; }
         }
-
-        /* Animations */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <!-- Floating Theme & Language Controls -->
-    <div class="controls-panel">
-        <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">ID</button>
-        <div style="width: 1px; background: var(--border-color); margin: 0 5px;"></div>
-        <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
-    </div>
+    <!-- =======================================================================
+         3. SEMANTIC HTML5 & ACCESSIBILITY (ARIA)
+         ======================================================================= -->
+    
+    <!-- Navigation / Controls -->
+    <nav class="controls-panel" aria-label="Page Controls">
+        <button class="ctrl-btn" id="langToggle" onclick="toggleLang()" aria-label="Toggle Language" tabindex="0">ID</button>
+        <div style="width: 1px; background: var(--border-color); margin: 0 5px;" role="separator"></div>
+        <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Dark/Light Mode" tabindex="0">🌙</button>
+    </nav>
 
     <div class="container">
-        <!-- HEADER SECTION -->
-        <header>
+        <!-- Header (Banner) -->
+        <header role="banner">
             <div class="profile-wrapper">
                 <div class="profile-frame">
-                    <img src="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg" alt="Bagas Arya Putra">
+                    <img src="https://raw.githubusercontent.com/whoisbagaskr/My-Portofolio/main/foto-bagas.jpeg" alt="Foto Profil Bagas Arya Putra">
                 </div>
-                <div class="status-badge" id="t-status">Ready to Hire</div>
+                <div class="status-badge" id="t-status" role="status">Ready to Hire</div>
             </div>
             <h1 id="t-name">BAGAS ARYA PUTRA</h1>
             <p id="t-tagline">Loading...</p>
             
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="openCV()" id="t-btnCV">📄 Lihat & Cetak CV ATS</button>
-                <a class="btn btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=ba6422977@gmail.com" target="_blank" id="t-btnEmail">📧 Email Utama</a>
-                <a class="btn btn-secondary" id="wa-link" href="#" target="_blank">💬 WhatsApp</a>
+            <div class="btn-group" role="group" aria-label="Contact Actions">
+                <button class="btn btn-primary" onclick="openCV()" id="t-btnCV" aria-haspopup="dialog" tabindex="0">📄 Lihat & Cetak CV ATS</button>
+                <a class="btn btn-secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=ba6422977@gmail.com" target="_blank" rel="noopener noreferrer" id="t-btnEmail" tabindex="0">📧 Email Utama</a>
+                <a class="btn btn-secondary" id="wa-link" href="#" target="_blank" rel="noopener noreferrer" tabindex="0">💬 WhatsApp</a>
             </div>
         </header>
 
-        <!-- MAIN CONTENT LAYOUT -->
-        <div class="main-layout">
+        <!-- Main Content -->
+        <main class="main-layout" id="main-content" role="main">
             
-            <!-- KOLOM KIRI -->
+            <!-- Left Column -->
             <div class="left-col">
-                <div class="section">
-                    <div class="section-title" id="t-sec-generalist">Keahlian Lintas Bidang (Generalist)</div>
-                    <div class="services-grid" id="dyn-generalist"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-generalist">
+                    <h2 class="section-title" id="t-sec-generalist">Keahlian Lintas Bidang (Generalist)</h2>
+                    <div class="services-grid" id="dyn-generalist" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-projects">Aplikasi Keahlian Lintas Disiplin</div>
-                    <div class="project-grid" id="dyn-projects"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-projects">
+                    <h2 class="section-title" id="t-sec-projects">Aplikasi Keahlian Lintas Disiplin</h2>
+                    <div class="project-grid" id="dyn-projects" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-exp">Rekam Jejak Karier</div>
-                    <div class="timeline" id="dyn-experience"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-exp">
+                    <h2 class="section-title" id="t-sec-exp">Rekam Jejak Karier</h2>
+                    <div class="timeline" id="dyn-experience" role="feed"></div>
+                </section>
             </div>
 
-            <!-- KOLOM KANAN -->
-            <div class="right-col">
-                <div class="section">
-                    <div class="section-title" id="t-sec-about">Tentang Saya</div>
+            <!-- Right Column -->
+            <aside class="right-col" aria-label="Informasi Tambahan">
+                <section class="section" aria-labelledby="t-sec-about">
+                    <h2 class="section-title" id="t-sec-about">Tentang Saya</h2>
                     <p id="t-summary" style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;"></p>
-                </div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-docs">Verifikasi & Berkas Resmi</div>
-                    <div class="doc-list" id="dyn-docs"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-docs">
+                    <h2 class="section-title" id="t-sec-docs">Verifikasi & Berkas Resmi</h2>
+                    <div class="doc-list" id="dyn-docs" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-org">Pengalaman Organisasi & Komunitas</div>
-                    <div class="doc-list" id="dyn-org"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-org">
+                    <h2 class="section-title" id="t-sec-org">Pengalaman Organisasi & Komunitas</h2>
+                    <div class="doc-list" id="dyn-org" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-achieve">Prestasi & Olahraga</div>
-                    <div class="doc-list" id="dyn-achieve"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-achieve">
+                    <h2 class="section-title" id="t-sec-achieve">Prestasi & Olahraga</h2>
+                    <div class="doc-list" id="dyn-achieve" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-edu">Riwayat Pendidikan</div>
-                    <div id="dyn-education" style="font-size: 0.95rem;"></div>
-                </div>
+                <section class="section" aria-labelledby="t-sec-edu">
+                    <h2 class="section-title" id="t-sec-edu">Riwayat Pendidikan</h2>
+                    <div id="dyn-education" style="font-size: 0.95rem;" role="list"></div>
+                </section>
 
-                <div class="section">
-                    <div class="section-title" id="t-sec-skills">Kompetensi Teknis</div>
-                    <div style="margin-bottom: 15px;">
-                        <h3 style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;" id="t-hardskills">Hard Skills</h3>
-                        <div class="tags" id="dyn-hardskills"></div>
+                <section class="section" aria-labelledby="t-sec-skills">
+                    <h2 class="section-title" id="t-sec-skills">Kompetensi Teknis</h2>
+                    <div style="margin-bottom: var(--space-md);">
+                        <h3 style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-xs);" id="t-hardskills">Hard Skills</h3>
+                        <div class="tags" id="dyn-hardskills" role="list"></div>
                     </div>
                     <div>
-                        <h3 style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;" id="t-softskills">Soft Skills</h3>
-                        <div class="tags" id="dyn-softskills"></div>
+                        <h3 style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-xs);" id="t-softskills">Soft Skills</h3>
+                        <div class="tags" id="dyn-softskills" role="list"></div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
+            </aside>
+        </main>
     </div>
 
-    <!-- MODAL ATS CV -->
-    <div class="cv-overlay" id="cvOverlay">
+    <!-- ATS CV Modal Dialog -->
+    <div class="cv-overlay" id="cvOverlay" role="dialog" aria-modal="true" aria-labelledby="cv-name">
         <div class="cv-document">
-            <button class="cv-close" onclick="closeCV()" id="cv-btn-close">Tutup [Esc]</button>
+            <button class="cv-close" onclick="closeCV()" id="cv-btn-close" aria-label="Close Dialog" tabindex="0">Tutup [Esc]</button>
             <div class="cv-header">
                 <h1 id="cv-name">BAGAS ARYA PUTRA</h1>
                 <p id="cv-contact"></p>
@@ -357,17 +378,16 @@
 
     <!-- BILINGUAL DATA & LOGIC ENGINE -->
     <script>
-        // --- 1. THEME CONTROLLER ---
         let isDark = true;
         function toggleTheme() {
             isDark = !isDark;
             document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
             document.getElementById('themeToggle').innerText = isDark ? '🌙' : '☀️';
+            // Update ARIA for Accessibility
+            document.getElementById('themeToggle').setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
         }
 
-        // --- 2. BILINGUAL DATABASE ---
         let currentLang = 'id';
-
         const dict = {
             id: {
                 static: {
@@ -485,11 +505,10 @@
             renderContent();
         }
 
-        // --- 3. RENDERING ENGINE ---
         function renderContent() {
             const data = dict[currentLang];
             
-            // Static Texts
+            // Text Replacements
             document.getElementById('t-status').innerText = data.static.status;
             document.getElementById('t-btnCV').innerText = data.static.btnCV;
             document.getElementById('t-btnEmail').innerText = data.static.btnEmail;
@@ -508,49 +527,21 @@
             document.getElementById('t-hardskills').innerText = data.static.hHard;
             document.getElementById('t-softskills').innerText = data.static.hSoft;
             
-            // Profile
             document.getElementById('t-tagline').innerText = data.profile.tagline;
             document.getElementById('t-summary').innerText = data.profile.ringkasan;
             
-            // Generalist Grid
-            document.getElementById('dyn-generalist').innerHTML = data.generalist.map(g => `
-                <div class="service-card"><span class="icon">${g.icon}</span><h4>${g.title}</h4><p>${g.desc}</p></div>
-            `).join('');
+            // Arrays with ARIA role="listitem" mapped inside role="list"
+            document.getElementById('dyn-generalist').innerHTML = data.generalist.map(g => `<div class="service-card" role="listitem"><span class="icon" aria-hidden="true">${g.icon}</span><h4>${g.title}</h4><p>${g.desc}</p></div>`).join('');
+            document.getElementById('dyn-projects').innerHTML = data.projects.map(p => `<div class="project-card" role="listitem"><div class="project-img-box"><span class="p-status">${p.status}</span><img src="${p.img}" alt="Preview ${p.judul}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';"></div><div class="project-info"><span class="tag">${p.tag}</span><h3>${p.judul}</h3><p>${p.desc}</p><div class="project-tools">${p.tools.map(t=>`<span>${t}</span>`).join('')}</div></div></div>`).join('');
+            document.getElementById('dyn-experience').innerHTML = data.experience.map(e => `<article class="timeline-item"><span class="time-badge">${e.waktu}</span><h3>${e.posisi}</h3><h4>${e.tempat}</h4><p>${e.detail}</p></article>`).join('');
+            document.getElementById('dyn-docs').innerHTML = data.docs.map(d => `<div class="doc-item" role="listitem"><div class="doc-info"><span class="doc-icon" aria-hidden="true">${d.icon}</span><div><div class="doc-name">${d.name}</div><div class="doc-issuer">${d.issuer}</div></div></div><a href="${d.link}" class="btn-view-doc" target="_blank" rel="noopener noreferrer">${data.static.btnBuka}</a></div>`).join('');
+            document.getElementById('dyn-org').innerHTML = data.orgs.map(o => `<div class="doc-item" style="align-items:flex-start;" role="listitem"><div class="doc-info"><span class="doc-icon" aria-hidden="true">${o.icon}</span><div><div class="doc-name">${o.name}</div><div class="doc-issuer">${o.issuer}</div><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">${o.desc}</p></div></div></div>`).join('');
+            document.getElementById('dyn-achieve').innerHTML = data.achievements.map(a => `<div class="doc-item" style="align-items:flex-start;" role="listitem"><div class="doc-info"><span class="doc-icon" aria-hidden="true">${a.icon}</span><div><div class="doc-name">${a.name}</div><div class="doc-issuer">${a.issuer}</div><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">${a.desc}</p></div></div></div>`).join('');
+            document.getElementById('dyn-education').innerHTML = data.education.map(ed => `<div style="margin-bottom:20px;" role="listitem"><strong style="color:var(--accent);">${ed.kapan}</strong><p style="font-weight:600;margin-top:4px;">${ed.di}</p><p style="color:var(--text-muted);font-size:0.9rem;">${ed.spesialisasi}</p></div>`).join('');
+            document.getElementById('dyn-hardskills').innerHTML = data.skills.hard.map(s => `<span class="tag-item" role="listitem">${s}</span>`).join('');
+            document.getElementById('dyn-softskills').innerHTML = data.skills.soft.map(s => `<span class="tag-item" role="listitem">${s}</span>`).join('');
 
-            // Projects
-            document.getElementById('dyn-projects').innerHTML = data.projects.map(p => `
-                <div class="project-card">
-                    <div class="project-img-box"><span class="p-status">${p.status}</span><img src="${p.img}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';"></div>
-                    <div class="project-info"><span class="tag">${p.tag}</span><h3>${p.judul}</h3><p>${p.desc}</p><div class="project-tools">${p.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>
-                </div>
-            `).join('');
-
-            // Experience
-            document.getElementById('dyn-experience').innerHTML = data.experience.map(e => `
-                <div class="timeline-item"><span class="time-badge">${e.waktu}</span><h3>${e.posisi}</h3><h4>${e.tempat}</h4><p>${e.detail}</p></div>
-            `).join('');
-
-            // Docs
-            document.getElementById('dyn-docs').innerHTML = data.docs.map(d => `
-                <div class="doc-item"><div class="doc-info"><span class="doc-icon">${d.icon}</span><div><div class="doc-name">${d.name}</div><div class="doc-issuer">${d.issuer}</div></div></div><a href="${d.link}" class="btn-view-doc" target="_blank">${data.static.btnBuka}</a></div>
-            `).join('');
-
-            // Orgs & Achieve
-            document.getElementById('dyn-org').innerHTML = data.orgs.map(o => `
-                <div class="doc-item" style="align-items:flex-start;"><div class="doc-info"><span class="doc-icon">${o.icon}</span><div><div class="doc-name">${o.name}</div><div class="doc-issuer">${o.issuer}</div><p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">${o.desc}</p></div></div></div>
-            `).join('');
-            document.getElementById('dyn-achieve').innerHTML = data.achievements.map(a => `
-                <div class="doc-item" style="align-items:flex-start;"><div class="doc-info"><span class="doc-icon">${a.icon}</span><div><div class="doc-name">${a.name}</div><div class="doc-issuer">${a.issuer}</div><p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">${a.desc}</p></div></div></div>
-            `).join('');
-
-            // Education & Skills
-            document.getElementById('dyn-education').innerHTML = data.education.map(ed => `
-                <div style="margin-bottom:18px;"><strong style="color:var(--accent);">${ed.kapan}</strong><p style="font-weight:600;margin-top:2px;">${ed.di}</p><p style="color:var(--text-muted);font-size:0.85rem;">${ed.spesialisasi}</p></div>
-            `).join('');
-            document.getElementById('dyn-hardskills').innerHTML = data.skills.hard.map(s => `<span class="tag-item">${s}</span>`).join('');
-            document.getElementById('dyn-softskills').innerHTML = data.skills.soft.map(s => `<span class="tag-item">${s}</span>`).join('');
-
-            // --- CV ATS MODAL UPDATE ---
+            // CV ATS Updates
             document.getElementById('cv-btn-close').innerText = data.static.cvClose;
             document.getElementById('cv-t-summary').innerText = data.static.cvTSum;
             document.getElementById('cv-t-exp').innerText = data.static.cvTExp;
@@ -568,20 +559,18 @@
                 <div><b>${data.static.hSoft}:</b><br>${data.skills.soft.map(s=>`• ${s}`).join('<br>')}</div>`;
         }
 
-        // Initialize First Render
         renderContent();
 
-        // Modal Logic
         function openCV() { 
             const overlay = document.getElementById('cvOverlay');
             overlay.style.display = 'flex'; 
-            setTimeout(() => overlay.classList.add('show'), 10);
+            setTimeout(() => { overlay.classList.add('show'); document.getElementById('cv-btn-close').focus(); }, 10);
             document.body.style.overflow = 'hidden'; 
         }
         function closeCV() { 
             const overlay = document.getElementById('cvOverlay');
             overlay.classList.remove('show');
-            setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+            setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = 'auto'; document.getElementById('t-btnCV').focus(); }, 300);
         }
         window.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCV(); });
     </script>
